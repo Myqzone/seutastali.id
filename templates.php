@@ -2,6 +2,9 @@
 // Load bootstrap (centralized config loading)
 require_once __DIR__ . '/config/bootstrap.php';
 
+// Retrieve active package parameter from URL
+$package_param = isset($_GET['package']) ? htmlspecialchars($_GET['package']) : '';
+
 // Make $conn available globally
 global $conn;
 
@@ -72,14 +75,26 @@ ob_start();
         // Show first 4 templates (index 0, 1, 2, 3), hide the rest
         $display_style = ($index < 4) ? '' : 'style="display: none;"';
 
-        // Construct template preview URL (always path-based as requested)
-        $template_url = STATIC_URL . 'templates/' . urlencode($key) . '/';
+        // Base template URL
+        $base_template_url = STATIC_URL . 'design/' . urlencode($key) . '/';
+        
+        // Simple preview URL (for demo only)
+        $preview_url = $base_template_url . '?preview=1';
+        if (!empty($package_param)) {
+            $preview_url .= '&package=' . urlencode($package_param);
+        }
+        
+        // Try/Edit Sandbox URL (triggers editor automatically)
+        $try_url = $base_template_url . '?edit=1';
+        if (!empty($package_param)) {
+            $try_url .= '&package=' . urlencode($package_param);
+        }
       ?>
         <div class="col-6 col-md-6 col-lg-3 template-grid-card" data-index="<?= $index ?>" data-category="<?= $card['category'] ?>" data-popular="<?= isset($card['popular']) && $card['popular'] ? 'true' : 'false' ?>" <?= $display_style ?> data-aos="fade-up" data-aos-delay="<?= 200 + (($index % 4) * 100) ?>">
           <div class="card bg-primary border-0 rounded-4 overflow-hidden h-100 shadow-none template-card p-0">
             <div class="position-relative overflow-hidden w-100 template-card-mockup">
               <!-- Click image to open Live Demo directly -->
-              <a href="<?= $template_url ?>" target="_blank">
+              <a href="<?= $preview_url ?>" target="_blank">
                 <img src="<?= ASSETS_URL ?>media/template/<?= $card['image'] ?>" class="w-100 h-100 object-fit-cover template-card-image" alt="<?= $card['alt'] ?>" loading="lazy">
               </a>
 
@@ -93,12 +108,12 @@ ob_start();
 
               <!-- Open Live Preview first under Option A Flow -->
               <div class="template-hover-btn-wrapper position-absolute bottom-0 start-0 end-0 text-center pb-2 pb-md-3">
-                <a href="<?= $template_url ?>" class="btn btn-light text-primary fw-bold rounded-pill px-4 py-2 template-card-btn">Buka Undangan</a>
+                <a href="<?= $try_url ?>" class="btn btn-light text-primary fw-bold rounded-pill px-4 py-2 template-card-btn">Coba Template</a>
               </div>
             </div>
             <div class="card-footer bg-transparent border-0 text-center py-2">
               <!-- Click title to open Live Demo directly -->
-              <a href="<?= $template_url ?>" target="_blank" class="text-decoration-none">
+              <a href="<?= $preview_url ?>" target="_blank" class="text-decoration-none">
                 <h5 class="card-title fw-bold mb-0 text-white text-capitalize template-card-title"><?= $card['title'] ?></h5>
               </a>
             </div>
@@ -107,6 +122,7 @@ ob_start();
       <?php
         $index++;
       endforeach;
+
       ?>
     </div>
 

@@ -25,7 +25,7 @@ if (!isset($template_cards)) {
             <div class="splide__list">
                 <?php foreach ($template_cards as $key => $card):
                     // Construct template preview URL (always path-based as requested)
-                    $template_url = STATIC_URL . 'templates/' . urlencode($key) . '/';
+                    $template_url = STATIC_URL . 'design/' . urlencode($key) . '/';
                 ?>
                     <div class="splide__slide template-slider-item template-grid-item" data-category="<?= $card['category'] ?>" data-popular="<?= isset($card['popular']) && $card['popular'] ? 'true' : 'false' ?>">
                         <div class="card bg-primary border-0 rounded-4 overflow-hidden h-100 shadow-none template-card p-0">

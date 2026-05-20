@@ -1,8 +1,7 @@
 <?php
-/**
- * Seutastali Music Player & Floating Control Button Partial
- * Reusable self-contained music module.
- */
+if (!defined('ASSETS_URL')) {
+    define('ASSETS_URL', (defined('STATIC_URL') ? STATIC_URL : '/') . 'assets/');
+}
 $bg_music = $bg_music ?? 'romantic-wedding.mp3';
 ?>
 <!-- Reusable Encapsulated Music Styles -->

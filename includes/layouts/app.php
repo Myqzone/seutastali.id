@@ -38,6 +38,14 @@ if (!isset($content)) {
     }
     ?>
 
+    <!-- Include Neubrutalist Seutasbox -->
+    <?php 
+    if (file_exists(ROOT_PATH . 'includes/sections/seutasbox.php')) {
+        include ROOT_PATH . 'includes/sections/seutasbox.php';
+    }
+    ?>
+
+
     <!-- Include Global Scripts -->
     <?php include ROOT_PATH . 'includes/script.php'; ?>
 

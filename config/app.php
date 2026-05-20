@@ -128,10 +128,20 @@ if ($envBaseUrl !== '' && $envStaticUrl !== '') {
     $isAppRequest   = (strpos($uri, '/app') !== false) || (strpos($script, '/app/') !== false);
 
     // 3. Project Path
-    $projectPath = '/';
-    if (strpos($script, '/app/') !== false) {
-        $projectPath = rtrim(substr($script, 0, strpos($script, '/app/')), '/') . '/';
+    $docRoot = realpath($_SERVER['DOCUMENT_ROOT'] ?? '');
+    $projRoot = realpath(ROOT_PATH);
+    if ($docRoot && $projRoot) {
+        $docRoot = str_replace('\\', '/', $docRoot);
+        $projRoot = str_replace('\\', '/', $projRoot);
+        if (strpos($projRoot, $docRoot) === 0) {
+            $projectPath = '/' . ltrim(substr($projRoot, strlen($docRoot)), '/');
+        } else {
+            $projectPath = '/';
+        }
+    } else {
+        $projectPath = '/';
     }
+    $projectPath = rtrim($projectPath, '/') . '/';
 
     // 4. Define Core URLs
     if (!defined('BASE_URL')) {
@@ -155,7 +165,11 @@ if ($envBaseUrl !== '' && $envStaticUrl !== '') {
 
     // 5. Assets URL (Point to main domain if on subdomain with CORS support)
     if (!defined('ASSETS_URL')) {
-        define('ASSETS_URL', rtrim($isAppSubdomain ? MAIN_SITE_URL : STATIC_URL, '/') . '/assets/');
+        if ($isAppSubdomain || ($isTemplateSubdomain ?? false)) {
+            define('ASSETS_URL', rtrim(MAIN_SITE_URL, '/') . '/assets/');
+        } else {
+            define('ASSETS_URL', STATIC_URL . 'assets/');
+        }
     }
     if (!defined('ASSET_URL')) define('ASSET_URL', ASSETS_URL); // Alias for compatibility
 

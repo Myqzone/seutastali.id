@@ -81,9 +81,9 @@ try {
         exit;
     }
     
-    // Retrieve guest information from session (or fallback parameters)
-    $guest_name = isset($_SESSION['guest_name']) ? $_SESSION['guest_name'] : 'Klien Seutastali';
-    $guest_email = isset($_SESSION['guest_email']) ? $_SESSION['guest_email'] : 'klien@seutastali.id';
+    // Retrieve guest information from session (or fallback parameters / draft payload)
+    $guest_name = isset($_SESSION['guest_name']) ? $_SESSION['guest_name'] : (isset($draft_payload['client_name']) ? $draft_payload['client_name'] : 'Klien Seutastali');
+    $guest_email = isset($_SESSION['guest_email']) ? $_SESSION['guest_email'] : (isset($draft_payload['client_email']) ? $draft_payload['client_email'] : 'klien@seutastali.id');
 
     // 2. Check if user already exists using mysqli
     $user_id = null;
@@ -113,13 +113,15 @@ try {
         }
     }
 
-    // 3. Create unique subdomain slug using bride and groom name
-    $groom_slug = preg_replace('/[^a-zA-Z0-9]/', '', strtolower($draft_payload['groom']));
-    $bride_slug = preg_replace('/[^a-zA-Z0-9]/', '', strtolower($draft_payload['bride']));
-    $base_subdomain = $groom_slug . '-' . $bride_slug;
+    // 3. Setup user custom subdomain slug or fallback
+    $subdomain = isset($input_data['subdomain']) ? preg_replace('/[^a-zA-Z0-9-]/', '', strtolower($input_data['subdomain'])) : '';
+    if (empty($subdomain)) {
+        $groom_slug = preg_replace('/[^a-zA-Z0-9]/', '', strtolower($draft_payload['groom']));
+        $bride_slug = preg_replace('/[^a-zA-Z0-9]/', '', strtolower($draft_payload['bride']));
+        $subdomain = $groom_slug . '-' . $bride_slug;
+    }
     
-    // Append random number to avoid duplicates
-    $subdomain = $base_subdomain;
+    // Check if subdomain exists, append suffix if it does
     $stmt = $conn->prepare("SELECT id FROM invitations WHERE subdomain = ?");
     if ($stmt) {
         $stmt->bind_param("s", $subdomain);
@@ -129,27 +131,30 @@ try {
         $stmt->close();
         
         if ($exist) {
-            $subdomain = $base_subdomain . rand(10, 99);
+            $subdomain = $subdomain . rand(10, 99);
         }
     }
 
-    // 4. Create Invitation outline record using mysqli
+    // 4. Create active invitation record using mysqli
     $event_location = isset($details['event_address']) ? $details['event_address'] : 'Jakarta';
-    $wedding_date = isset($draft_payload['date']) ? $draft_payload['date'] : date('Y-m-d');
-    $template_theme = isset($draft_payload['template']) ? $draft_payload['template'] : 'floral';
+    $template_theme = isset($input_data['theme']) ? trim($input_data['theme']) : (isset($draft_payload['template']) ? $draft_payload['template'] : 'floral');
+    
+    $bride_name = isset($input_data['bride_name']) ? trim($input_data['bride_name']) : (isset($draft_payload['bride']) ? $draft_payload['bride'] : 'Wanita');
+    $groom_name = isset($input_data['groom_name']) ? trim($input_data['groom_name']) : (isset($draft_payload['groom']) ? $draft_payload['groom'] : 'Pria');
+    $wedding_date = isset($input_data['wedding_date']) ? trim($input_data['wedding_date']) : (isset($draft_payload['date']) ? $draft_payload['date'] : date('Y-m-d'));
 
     $stmt = $conn->prepare("INSERT INTO invitations 
         (user_id, subdomain, theme_folder, bride_name, groom_name, event_date, event_location, status) 
         VALUES 
-        (?, ?, ?, ?, ?, ?, ?, 'inactive')");
+        (?, ?, ?, ?, ?, ?, ?, 'active')");
     
     if ($stmt) {
         $stmt->bind_param("issssss", 
             $user_id, 
             $subdomain, 
             $template_theme, 
-            $draft_payload['bride'], 
-            $draft_payload['groom'], 
+            $bride_name, 
+            $groom_name, 
             $wedding_date, 
             $event_location
         );

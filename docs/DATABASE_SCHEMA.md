@@ -77,7 +77,15 @@ Tabel-tabel ini mengatur otentikasi, login, tokens terpadu, ulasan klien, dan se
 ---
 
 ## 3. Kategori: INVITATION SYSTEM (`invitation_` & `invitations`)
-Tabel-tabel ini mengatur domain, subdomain, tema terpilih, konten pernikahan, RSVP, dan amplop digital milik pengantin.
+Tabel-tabel ini mengatur draf undangan, domain, subdomain, tema terpilih, konten pernikahan, RSVP, dan amplop digital milik pengantin.
+
+### Tabel: `invitation_drafts`
+* **id**: `bigint(20)` (Auto Increment, Primary Key) - ID unik draf.
+* **draft_token**: `varchar(255)` (Unique) - Token acak untuk identifikasi draf di URL.
+* **template_slug**: `varchar(100)` - Slug tema terpilih (contoh: `rustic`, `modern`).
+* **draft_data**: `longtext` - Data draf tersimpan format JSON (Nama mempelai, Email, dll).
+* **created_at**: `timestamp` - Waktu pembuatan draf.
+* *Catatan Lifecycle*: Draf yang tidak diselesaikan pembayarannya akan dibersihkan otomatis oleh sistem (*cron job*) setelah **30 hari**.
 
 ### Tabel: `invitations`
 * **id**: `bigint(20)` (Auto Increment, Primary Key) - ID unik undangan.

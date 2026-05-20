@@ -1,6 +1,27 @@
 <?php
+// Set CORS headers dynamically for allowed origins
+if (isset($_SERVER['HTTP_ORIGIN'])) {
+    $origin = $_SERVER['HTTP_ORIGIN'];
+    // Allow any subdomain of seutastali.id or localhost/local domain
+    if (preg_match('/^https?:\/\/(?:[a-z0-9-]+\.)?seutastali\.id$/i', $origin) || 
+        preg_match('/^https?:\/\/localhost/i', $origin) ||
+        preg_match('/^https?:\/\/127\.0\.0\.1/i', $origin) ||
+        preg_match('/^https?:\/\/(?:[a-z0-9-]+\.)?apprsa\.me$/i', $origin)) {
+        header("Access-Control-Allow-Origin: " . $origin);
+        header("Access-Control-Allow-Credentials: true");
+        header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+        header("Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With");
+    }
+}
+
+// Handle preflight OPTIONS request
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    exit(0);
+}
+
 // Set headers for JSON response
 header('Content-Type: application/json');
+
 
 // Load bootstrap config to get database connection
 require_once __DIR__ . '/../config/bootstrap.php';
@@ -57,6 +78,10 @@ try {
     $draft_token = bin2hex(random_bytes(16)); // 32-character hex string
     
     // Convert draft payload to JSON string
+    if (is_array($draft_payload)) {
+        $draft_payload['client_name'] = $client_name;
+        $draft_payload['client_email'] = $client_email;
+    }
     $json_draft_data = json_encode($draft_payload);
     $template_slug = isset($draft_payload['template']) ? $draft_payload['template'] : 'floral';
 

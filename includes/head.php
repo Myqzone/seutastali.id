@@ -93,7 +93,7 @@ if (isset($data_bs_theme)) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
 
-    <link rel="stylesheet" href="<?= ASSETS_URL ?>css/style.css">
+    <link rel="stylesheet" href="<?= ASSETS_URL ?>css/style.css?v=<?= filemtime(ROOT_PATH . 'assets/css/style.css') ?>">
 
 
 

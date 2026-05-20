@@ -17,7 +17,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 299.000',
                 'discount_price' => 'Rp 149.000',
                 'description' => 'Desain undangan pernikahan bernuansa klasik editorial dengan tata letak majalah estetis. Sangat cocok bagi Anda yang menyukai perpaduan tipografi serif nan anggun dan ruang visual yang bersih serta elegan.',
-                'demo_url' => 'templates/syakira',
+                'demo_url' => 'design/syakira',
                 'features' => ['Tata Letak Editorial Klasik', 'Galeri Foto & Video Premium', 'Sistem RSVP & Buku Tamu', 'Integrasi Google Maps Interaktif', 'Musik Latar Kustom (Autoplay)']
             ],
             'kamila' => [
@@ -28,7 +28,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 299.000',
                 'discount_price' => 'Rp 149.000',
                 'description' => 'Keindahan romantis klasik yang abadi terpancar dari template Kamila. Mengedepankan ornamen garis halus yang mewah, nuansa warna pastel yang anggun, serta transisi animasi romantis yang memanjakan mata.',
-                'demo_url' => 'templates/kamila',
+                'demo_url' => 'design/kamila',
                 'features' => ['Ornamen Klasik Romantis', 'Kisah Cinta & Timeline Pernikahan', 'Fitur RSVP Realtime', 'Background Music Pilihan', 'Amplop Digital / Gift System']
             ],
             'annisa' => [
@@ -39,7 +39,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 249.000',
                 'discount_price' => 'Rp 129.000',
                 'description' => 'Sentuhan keanggunan tradisional berpadu dengan modernitas digital. Annisa dirancang dengan aksen ukiran halus yang mewah dan kontras warna berani untuk menonjolkan setiap detail momen sakral Anda.',
-                'demo_url' => 'templates/annisa',
+                'demo_url' => 'design/annisa',
                 'features' => ['Aksen Ukiran Mewah', 'Countdown Timer Presisi', 'Konfirmasi RSVP & Ucapan', 'Google Maps Navigation', 'Format Tamu Tanpa Batas']
             ],
             'adinda' => [
@@ -50,7 +50,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 349.000',
                 'discount_price' => 'Rp 179.000',
                 'description' => 'Kemegahan kerajaan yang agung hadir dalam template Adinda. Mengusung skema warna royal emas dan ornamen tiara mewah, menjadikannya pilihan utama untuk resepsi pernikahan bertema agung nan megah.',
-                'demo_url' => 'templates/adinda',
+                'demo_url' => 'design/adinda',
                 'features' => ['Royal Gold Ornaments', 'Protokol Kesehatan Terintegrasi', 'Live Streaming Video Embed', 'Custom RSVP Dashboard', 'E-Gift & Rekening Terverifikasi']
             ],
 
@@ -64,7 +64,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 349.000',
                 'discount_price' => 'Rp 189.000',
                 'description' => 'Terinspirasi dari tren Neubrutalisme Katsudoto yang sedang viral. Memadukan warna kontras tinggi, border hitam super tebal (thick stroke), font sans-serif tebal, serta ornamen bento grid yang sangat modis dan kekinian.',
-                'demo_url' => 'templates/katsudoto',
+                'demo_url' => 'design/katsudoto',
                 'features' => ['Premium Bento Grid Layout', 'High Contrast Neubrutalist Shadows', 'Sistem RSVP & Live Guest Comments', 'Multi-rekening E-Wallet', 'Mobile-first Ultra Fast Loading']
             ],
             'mondrian' => [
@@ -75,7 +75,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 299.000',
                 'discount_price' => 'Rp 149.000',
                 'description' => 'Gaya seni rupa blok geometris Piet Mondrian yang ikonik diimplementasikan dalam bentuk undangan pernikahan digital. Menawarkan struktur asimetris, garis pembatas tebal, dan letupan warna primer yang estetik.',
-                'demo_url' => 'templates/mondrian',
+                'demo_url' => 'design/mondrian',
                 'features' => ['Desain Blok Geometris Artistik', 'Animasi Hover Responsif', 'Rencana Acara & Google Calendar Integrasi', 'E-Gift Teraman', 'Unlimited Guest Names']
             ],
             'bauhaus' => [
@@ -86,7 +86,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 299.000',
                 'discount_price' => 'Rp 159.000',
                 'description' => 'Filosofi desain Bauhaus "Form Follows Function" berpadu dengan estetika Neubrutalis modern. Menampilkan grid minimalis yang sangat fungsional, tipografi tebal, dan kejelasan informasi yang luar biasa.',
-                'demo_url' => 'templates/bauhaus',
+                'demo_url' => 'design/bauhaus',
                 'features' => ['Estetika Minimalis Bauhaus', 'Sistem Peta Rute Navigasi', 'Integrasi RSVP Langsung ke WA', 'Music Player Elegan', 'Dark Mode Optimized']
             ],
             'brutal-chic' => [
@@ -97,7 +97,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 329.000',
                 'discount_price' => 'Rp 169.000',
                 'description' => 'Perpaduan sempurna antara kebrutalan desain modern dan keanggunan fashion kelas atas. Skema warna monokrom berpadu krem hangat menciptakan kontras visual premium yang mengesankan para penerima undangan Anda.',
-                'demo_url' => 'templates/brutal-chic',
+                'demo_url' => 'design/brutal-chic',
                 'features' => ['Fashion-inspired Layout', 'Custom Font Pairings', 'Countdown Acara Eksklusif', 'Galeri Carousel Foto', 'Buku Tamu Interaktif']
             ],
             'minimalis' => [
@@ -109,7 +109,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 199.000',
                 'discount_price' => 'Rp 99.000',
                 'description' => 'Keindahan dalam kesederhanaan. Template Minimalis menyuguhkan ruang visual bersih yang luas (negative space), tipografi serif anggun, dan transisi halus tanpa gangguan visual yang berlebihan.',
-                'demo_url' => 'templates/minimalis',
+                'demo_url' => 'design/minimalis',
                 'features' => ['Clean & Elegant Negative Space', 'Countdown Acara Minimalis', 'Integrasi Google Maps', 'RSVP Form Sederhana', 'Tamu Kustom Bebas']
             ],
             'zen' => [
@@ -120,7 +120,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 249.000',
                 'discount_price' => 'Rp 119.000',
                 'description' => 'Terinspirasi dari ketenangan taman Zen Jepang. Memanfaatkan palet warna bumi (earthy tones), garis pembatas tipis yang estetik, dan alur informasi yang mengalir dengan tenang serta damai.',
-                'demo_url' => 'templates/zen',
+                'demo_url' => 'design/zen',
                 'features' => ['Earthy Tones & Calm Design', 'Timeline Perjalanan Cinta', 'RSVP Realtime', 'Background Music Meditatif', 'Galeri Foto Slide']
             ],
             'elegance' => [
@@ -131,7 +131,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 249.000',
                 'discount_price' => 'Rp 129.000',
                 'description' => 'Desain murni berkelas tinggi untuk menonjolkan foto-foto prewedding terbaik Anda. Dibangun dengan grid proporsional yang rapi, menghasilkan presentasi visual yang memikat di setiap ukuran layar.',
-                'demo_url' => 'templates/elegance',
+                'demo_url' => 'design/elegance',
                 'features' => ['Premium Portrait Mockups', 'RSVP & Guest Book Terpadu', 'Peta Lokasi Tombol Pintar', 'Autoplay Backsound', 'Tampilan Mobile Sempurna']
             ],
             'pure-love' => [
@@ -142,7 +142,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 229.000',
                 'discount_price' => 'Rp 119.000',
                 'description' => 'Kehangatan cinta sejati yang terpancar melalui desain minimalis bernuansa hangat. Pilihan warna krem lembut dan layout tanpa batas menciptakan kenyamanan membaca bagi setiap tamu penting Anda.',
-                'demo_url' => 'templates/pure-love',
+                'demo_url' => 'design/pure-love',
                 'features' => ['Warm Canvas Style', 'Fitur Hitung Mundur Elegan', 'Amplop Digital QR Code', 'Sistem RSVP Terverifikasi', 'Peta Lokasi Instan']
             ],
 
@@ -156,7 +156,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 249.000',
                 'discount_price' => 'Rp 129.000',
                 'description' => 'Desain undangan pernikahan bertema botani romantis. Dikelilingi ilustrasi dedaunan cat air (watercolor) yang indah dan estetis, memberikan kesan segar, alami, dan sangat intim.',
-                'demo_url' => 'templates/botanikal',
+                'demo_url' => 'design/botanikal',
                 'features' => ['Watercolor Leaf Border', 'Wedding Timeline Estetis', 'Countdown Timer Daun', 'RSVP & Wishlist Terintegrasi', 'Musik Latar Akustik']
             ],
             'ginkgo' => [
@@ -167,7 +167,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 249.000',
                 'discount_price' => 'Rp 129.000',
                 'description' => 'Menghadirkan keindahan legendaris daun Ginkgo Biloba yang melambangkan keabadian cinta. Tata letak asimetris berpadu ilustrasi ginkgo emas tipis yang memukau di atas latar kanvas bertekstur.',
-                'demo_url' => 'templates/ginkgo',
+                'demo_url' => 'design/ginkgo',
                 'features' => ['Golden Ginkgo Ornaments', 'Galeri Foto Grid Unik', 'Konfirmasi RSVP Realtime', 'Background Music Pilihan', 'E-Gift & Amplop Pintar']
             ],
             'eucalyptus' => [
@@ -178,7 +178,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 279.000',
                 'discount_price' => 'Rp 139.000',
                 'description' => 'Nuansa eucalyptus hijau sage yang menenangkan dan modern. Desain modern-botanical ini sangat populer di kalangan pasangan muda karena memberikan kesan tenang, anggun, dan bersih.',
-                'demo_url' => 'templates/eucalyptus',
+                'demo_url' => 'design/eucalyptus',
                 'features' => ['Modern Sage Green Palette', 'Responsive Photo Carousel', 'Sistem RSVP & Buku Tamu Terintegrasi', 'Google Maps Direction', 'Music Autoplay']
             ],
             'olive-garden' => [
@@ -189,7 +189,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 269.000',
                 'discount_price' => 'Rp 129.000',
                 'description' => 'Menampilkan pesona kebun zaitun Italia yang klasik dan asri. Perpaduan ranting zaitun cat air yang detail dengan aksen font romawi klasik, memberikan atmosfer pedesaan Eropa nan romantis.',
-                'demo_url' => 'templates/olive-garden',
+                'demo_url' => 'design/olive-garden',
                 'features' => ['Watercolor Olive Branch', 'Hitung Mundur Pernikahan Daun', 'RSVP & Guest Book Terverifikasi', 'Peta Lokasi Instan', 'Backsound Musik Pilihan']
             ],
 
@@ -203,7 +203,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 399.000',
                 'discount_price' => 'Rp 199.000',
                 'description' => 'Kemewahan malam bertabur bintang hadir dalam template Midnight. Menggunakan warna dasar hitam pekat yang dikombinasikan dengan foil emas berkilau dan marmer hitam premium, menciptakan kesan aristokrat yang megah.',
-                'demo_url' => 'templates/midnight',
+                'demo_url' => 'design/midnight',
                 'features' => ['Dark Marble Premium Background', 'Golden Foil Ornaments', 'RSVP & Live Wishlist Dashboard', 'VIP Guest Access Code', 'Autoplay Orchestral Music']
             ],
             'gold-royal' => [
@@ -214,7 +214,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 399.000',
                 'discount_price' => 'Rp 199.000',
                 'description' => 'Desain undangan digital paling mewah dengan dominasi warna emas berkilau di atas latar kanvas sutra putih. Sangat cocok bagi Anda yang merencanakan resepsi pernikahan mewah berkapasitas besar.',
-                'demo_url' => 'templates/gold-royal',
+                'demo_url' => 'design/gold-royal',
                 'features' => ['White Silk & Royal Gold Motif', 'Countdown Jam Mewah', 'RSVP Terintegrasi WhatsApp & Database', 'Live Streaming Video Embed', 'Amplop Digital QR Code']
             ],
             'sapphire' => [
@@ -225,7 +225,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 349.000',
                 'discount_price' => 'Rp 189.000',
                 'description' => 'Sentuhan keagungan batu safir biru tua yang dikelilingi oleh pola abstrak emas cair yang artistik. Menghasilkan perpaduan kontras warna mewah yang tiada duanya di dunia undangan pernikahan digital.',
-                'demo_url' => 'templates/sapphire',
+                'demo_url' => 'design/sapphire',
                 'features' => ['Sapphire Liquid Gold Abstract', 'Interactive Gallery Carousel', 'Sistem RSVP Terverifikasi', 'Google Maps Pintar', 'Custom Music Player']
             ],
             'velvet-night' => [
@@ -236,7 +236,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 349.000',
                 'discount_price' => 'Rp 179.000',
                 'description' => 'Kelembutan kain beludru merah marun berpadu dengan aksen garis emas yang minimalis nan eksklusif. Velvet Night dirancang khusus bagi pasangan yang menyukai estetika mewah yang tenang, intim, dan berkelas.',
-                'demo_url' => 'templates/velvet-night',
+                'demo_url' => 'design/velvet-night',
                 'features' => ['Velvet Maroon Background Theme', 'Exclusive Minimalist Gold Accents', 'RSVP & Guest Book Database', 'Google Maps Navigation', 'E-Gift System']
             ],
 
@@ -250,7 +250,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 249.000',
                 'discount_price' => 'Rp 129.000',
                 'description' => 'Desain undangan digital bertema retro modern yang penuh dengan keceriaan. Memadukan skema warna vintage pop yang kontras, ornamen berbentuk awan lembut dan bintang bersinar, serta tipografi retro nan funky.',
-                'demo_url' => 'templates/retro-chic',
+                'demo_url' => 'design/retro-chic',
                 'features' => ['Funky Retro Typography', 'Interactive Hover Effects', 'Buku Tamu Vintage', 'E-Gift Terintegrasi', 'Backsound Pop 80s']
             ],
             'vintage-love' => [
@@ -261,7 +261,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 249.000',
                 'discount_price' => 'Rp 129.000',
                 'description' => 'Bernostalgia ke masa lalu yang penuh kenangan indah. Mengusung skema warna sepia hangat, tekstur kertas tua yang realistis, serta ornamen vintage romantis untuk menceritakan kisah cinta abadi Anda.',
-                'demo_url' => 'templates/vintage-love',
+                'demo_url' => 'design/vintage-love',
                 'features' => ['Groovy Vintage Texture', 'Timeline Kisah Cinta Klasik', 'RSVP & Wishlist', 'Google Maps Navigation', 'Format Tamu Instan']
             ],
             'disco-fever' => [
@@ -272,7 +272,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 279.000',
                 'discount_price' => 'Rp 139.000',
                 'description' => 'Rayakan kebahagiaan Anda dengan kemeriahan pesta dansa era 70-an! Menawarkan kombinasi warna neon yang gemerlap, aksen piringan hitam (*vinyl record*) interaktif, serta efek animasi retro yang meriah.',
-                'demo_url' => 'templates/disco-fever',
+                'demo_url' => 'design/disco-fever',
                 'features' => ['Interactive Vinyl Music Player', 'Glow Neon Text Effects', 'Sistem RSVP & Buku Ucapan', 'Google Maps Direction', 'Gift System Terintegrasi']
             ],
             'groovy-day' => [
@@ -283,7 +283,7 @@ if (!function_exists('get_templates')) {
                 'price' => 'Rp 259.000',
                 'discount_price' => 'Rp 129.000',
                 'description' => 'Hari pernikahan Anda adalah hari yang ceria dan penuh kebahagiaan! Groove Day menyajikan ornamen bunga pop retro 70-an, palet warna oranye-kuning pastel yang cerah, serta kehangatan tipografi groovy.',
-                'demo_url' => 'templates/groovy-day',
+                'demo_url' => 'design/groovy-day',
                 'features' => ['Groovy Flower Ornaments', 'Retro Countdown Timer', 'RSVP Form Responsif', 'Backsound Musik Akustik', 'Amplop Digital']
             ]
         ];

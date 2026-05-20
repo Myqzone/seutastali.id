@@ -74,22 +74,22 @@ document.addEventListener('DOMContentLoaded', () => {
     { el: document.querySelector('.layer-arch'),     delay: 300 },
     { el: document.querySelector('.layer-seagulls'), delay: 900 },
     // Leaves
-    ...document.querySelectorAll('.layer-leaves-top').length
+    ...(document.querySelectorAll('.layer-leaves-top').length
       ? Array.from(document.querySelectorAll('.layer-leaves-top')).map((el, i) => ({ el, delay: 500 + i * 100 }))
-      : [],
+      : []),
     // Foreground elements
-    ...document.querySelectorAll('.fg-tree').length
+    ...(document.querySelectorAll('.fg-tree').length
       ? Array.from(document.querySelectorAll('.fg-tree')).map((el, i) => ({ el, delay: 600 + i * 100 }))
-      : [],
-    ...document.querySelectorAll('.fg-flower').length
+      : []),
+    ...(document.querySelectorAll('.fg-flower').length
       ? Array.from(document.querySelectorAll('.fg-flower')).map((el, i) => ({ el, delay: 750 + i * 100 }))
-      : [],
-    ...document.querySelectorAll('.fg-grass').length
+      : []),
+    ...(document.querySelectorAll('.fg-grass').length
       ? Array.from(document.querySelectorAll('.fg-grass')).map((el, i) => ({ el, delay: 850 + i * 80 }))
-      : [],
-    ...document.querySelectorAll('.fg-butterfly').length
+      : []),
+    ...(document.querySelectorAll('.fg-butterfly').length
       ? Array.from(document.querySelectorAll('.fg-butterfly')).map((el, i) => ({ el, delay: 1100 + i * 150 }))
-      : [],
+      : []),
     // Text last
     { el: document.querySelector('.cover-text'),    delay: 1300 },
   ];

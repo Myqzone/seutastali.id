@@ -5,6 +5,17 @@ require_once __DIR__ . '/config/bootstrap.php';
 // Make $conn available globally
 global $conn;
 
+// Fetch token if present from user editor sandbox
+$draft_token = isset($_GET['token']) ? htmlspecialchars($_GET['token']) : '';
+
+// Helper to generate dynamic package url
+function getPackageUrl($packageName, $token) {
+    if (!empty($token)) {
+        return "checkout.php?token=" . urlencode($token) . "&package=" . urlencode($packageName);
+    }
+    return "templates.php?package=" . urlencode($packageName);
+}
+
 // Set page meta
 $page_title = 'Pricing Tiers - Seutastali';
 $page_description = 'Pilih paket harga undangan digital terbaik yang sesuai dengan kebutuhan pernikahan impian Anda.';
@@ -67,14 +78,16 @@ ob_start();
     <!-- Paket Dasar (Full Width 1-Grid Row) -->
     <div class="row mb-5">
       <div class="col-12" data-aos="fade-up" data-aos-delay="100">
-        <div class="card rounded-4 border-0 shadow-sm p-4 bg-white">
+        <div class="card pricing-card rounded-4 p-4">
           <div class="row g-4 align-items-center">
             <!-- Left side: Pricing details -->
             <div class="col-lg-4 text-center text-lg-start pricing-divider pe-lg-4 pb-3 pb-lg-0">
-              <span class="badge bg-primary text-white mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold" style="font-size: 10px; letter-spacing: 0.5px;">Dasar</span>
-              <h2 class="fw-bold mb-1" style="font-size: 2.25rem;">Rp 149.000</h2>
-              <p class="text-muted small mb-4">Masa Aktif 30 Hari</p>
-              <a href="templates.php" class="btn btn-outline-primary rounded-pill px-5 py-2 fw-bold w-100 w-lg-auto">Mulai Buat</a>
+              <div class="mb-4">
+                <span class="badge bg-primary text-white mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold" style="font-size: 10px; letter-spacing: 0.5px;">Dasar</span>
+                <h2 class="fw-bold mb-1" style="font-size: 2.25rem;">Rp 149.000</h2>
+                <p class="text-muted small">Masa Aktif 30 Hari</p>
+              </div>
+              <a href="<?php echo getPackageUrl('Dasar', $draft_token); ?>" class="btn btn-outline-primary rounded-pill px-5 py-2 fw-bold w-100 w-lg-auto">Pilih Paket</a>
             </div>
             <!-- Right side: Grid of features -->
             <div class="col-lg-8 ps-lg-4">
@@ -166,11 +179,11 @@ ob_start();
     <div class="row g-4 justify-content-center mb-5">
       <!-- Lengkap Package -->
       <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
-        <div class="card h-100 rounded-4 border-0 shadow-sm p-4 bg-white d-flex flex-column">
+        <div class="card pricing-card h-100 rounded-4 p-4 d-flex flex-column">
           <div class="mb-4">
-            <span class="badge bg-light text-dark mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold" style="font-size: 10px; letter-spacing: 0.5px;">Lengkap</span>
+            <span class="badge bg-primary text-white mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold" style="font-size: 10px; letter-spacing: 0.5px;">Lengkap</span>
             <h3 class="fw-bold mb-1">Rp 199.000</h3>
-            <p class="text-muted small mb-4">Masa Aktif 60 Hari</p>
+            <p class="text-muted small">Masa Aktif 60 Hari</p>
           </div>
           <ul class="list-unstyled mb-4 flex-grow-1 pricing-feature-list">
             <li><i class="fa-solid fa-circle-check text-primary me-2"></i>Semua Fitur Paket Dasar</li>
@@ -180,18 +193,18 @@ ob_start();
             <li><i class="fa-solid fa-circle-check text-primary me-2"></i>Custom Musik Latar</li>
             <li><i class="fa-solid fa-circle-check text-primary me-2"></i>Kisah Cinta (Love Story)</li>
           </ul>
-          <a href="templates.php" class="btn btn-outline-primary rounded-pill w-100 mt-auto fw-bold">Mulai Buat</a>
+          <a href="<?php echo getPackageUrl('Lengkap', $draft_token); ?>" class="btn btn-outline-primary rounded-pill w-100 mt-auto fw-bold">Pilih Paket</a>
         </div>
       </div>
  
       <!-- Eksklusif Package -->
       <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="card h-100 rounded-4 border-0 shadow-sm p-4 bg-white d-flex flex-column position-relative overflow-hidden" style="border: 2px solid var(--c-primary) !important;">
+        <div class="card pricing-card h-100 rounded-4 p-4 d-flex flex-column position-relative overflow-hidden selected-card">
           <div class="position-absolute top-0 end-0 bg-primary text-white px-3 py-1 text-uppercase fw-bold" style="font-size: 9px; letter-spacing: 1px; border-bottom-left-radius: 12px;">Terpopuler</div>
           <div class="mb-4">
             <span class="badge bg-primary text-white mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold" style="font-size: 10px; letter-spacing: 0.5px;">Eksklusif</span>
             <h3 class="fw-bold mb-1">Rp 249.000</h3>
-            <p class="text-muted small mb-4">Masa Aktif 90 Hari</p>
+            <p class="text-muted small">Masa Aktif 90 Hari</p>
           </div>
           <ul class="list-unstyled mb-4 flex-grow-1 pricing-feature-list">
             <li><i class="fa-solid fa-circle-check text-primary me-2"></i>Semua Fitur Paket Lengkap</li>
@@ -201,17 +214,17 @@ ob_start();
             <li><i class="fa-solid fa-circle-check text-primary me-2"></i>Informasi Dresscode Acara</li>
             <li><i class="fa-solid fa-circle-check text-primary me-2"></i>Daftar Turut Mengundang</li>
           </ul>
-          <a href="templates.php" class="btn btn-primary rounded-pill w-100 mt-auto fw-bold">Mulai Buat</a>
+          <a href="<?php echo getPackageUrl('Eksklusif', $draft_token); ?>" class="btn btn-primary rounded-pill w-100 mt-auto fw-bold">Pilih Paket</a>
         </div>
       </div>
  
       <!-- Premium Package -->
       <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="250">
-        <div class="card h-100 rounded-4 border-0 shadow-sm p-4 bg-white d-flex flex-column">
+        <div class="card pricing-card h-100 rounded-4 p-4 d-flex flex-column">
           <div class="mb-4">
             <span class="badge bg-dark text-white mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold" style="font-size: 10px; letter-spacing: 0.5px;">Premium</span>
             <h3 class="fw-bold mb-1">Rp 399.000</h3>
-            <p class="text-muted small mb-4">Masa Aktif 1 Tahun</p>
+            <p class="text-muted small">Masa Aktif 1 Tahun</p>
           </div>
           <ul class="list-unstyled mb-4 flex-grow-1 pricing-feature-list">
             <li><i class="fa-solid fa-circle-check text-primary me-2"></i>Semua Fitur Paket Eksklusif</li>
@@ -221,7 +234,7 @@ ob_start();
             <li><i class="fa-solid fa-circle-check text-primary me-2"></i>Link Filter Instagram</li>
             <li><i class="fa-solid fa-circle-check text-primary me-2"></i>Link Live Streaming</li>
           </ul>
-          <a href="templates.php" class="btn btn-outline-primary rounded-pill w-100 mt-auto fw-bold">Mulai Buat</a>
+          <a href="<?php echo getPackageUrl('Premium', $draft_token); ?>" class="btn btn-outline-primary rounded-pill w-100 mt-auto fw-bold">Pilih Paket</a>
         </div>
       </div>
     </div>

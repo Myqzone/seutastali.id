@@ -78,9 +78,21 @@ body {
   margin: 0;
   font-family: "Manrope", sans-serif !important;
   font-size: 1rem !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   background-color: var(--c-sand);
   color: var(--c-primary-darker);
+}
+
+
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5,
+html body h6,
+html body strong,
+html body b {
+  font-weight: 700 !important;
 }
 
 section {
@@ -171,6 +183,12 @@ section {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  color: var(--c-primary) !important;
+}
+
+.form-control::placeholder {
+  color: var(--c-primary) !important;
+  opacity: 0.5;
 }
 
 .form-control:focus {
@@ -272,9 +290,8 @@ hr {
 }
 
 p {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 1rem;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .count-number {
@@ -313,6 +330,7 @@ p {
   background-color: var(--c-sand-dark);
   border: 1px solid rgba(var(--c-primary-rgb), 0.2);
   border-radius: var(--rounded-1rem);
+  margin-bottom: 0;
 }
 
 .card-body {
@@ -704,7 +722,8 @@ body.modal-open .custom-hamburger .line-2 {
   border: none;
   padding-bottom: env(safe-area-inset-bottom);
   position: relative;
-  overflow: visible !important; /* Ensure the bleed-down pseudo-element is not clipped */
+  overflow: visible !important;
+  /* Ensure the bleed-down pseudo-element is not clipped */
 }
 
 /* Background Bleeding to cover safe-area/Safari address bar gaps at the bottom of iPhone screen */

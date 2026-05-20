@@ -155,11 +155,27 @@ if ($envBaseUrl !== '' && $envStaticUrl !== '') {
     }
     define('BASE_URL', $origin . $currentPath . '/');
 
-    // 4. Define STATIC_URL (main domain for shared assets)
+    // 4. Calculate project root web path dynamically
+    $docRoot = realpath($_SERVER['DOCUMENT_ROOT'] ?? '');
+    $projRoot = realpath(ROOT_PATH);
+    if ($docRoot && $projRoot) {
+        $docRoot = str_replace('\\', '/', $docRoot);
+        $projRoot = str_replace('\\', '/', $projRoot);
+        if (strpos($projRoot, $docRoot) === 0) {
+            $webPath = '/' . ltrim(substr($projRoot, strlen($docRoot)), '/');
+        } else {
+            $webPath = '/';
+        }
+    } else {
+        $webPath = '/';
+    }
+    $webPath = rtrim($webPath, '/') . '/';
+
+    // 5. Define STATIC_URL (main domain for shared assets)
     if ($isAppSubdomain || $isTemplateSubdomain) {
         define('STATIC_URL', $scheme . '://' . $mainHost . '/');
     } else {
-        define('STATIC_URL', BASE_URL);
+        define('STATIC_URL', $origin . $webPath);
     }
 
     // 5. Define MAIN_SITE_URL (for asset loading)

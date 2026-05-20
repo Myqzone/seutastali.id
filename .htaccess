@@ -36,6 +36,9 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
 
 
+# Route old /templates/[slug] requests to /design/[slug]
+RewriteRule ^templates/(.+)$ design/$1 [L,QSA]
+
 # Route exact templates directory URL to templates.php catalog page
 RewriteRule ^templates/?$ templates.php [L]
 
@@ -45,15 +48,16 @@ RewriteCond %{ENV:REDIRECT_STATUS} ^$
 RewriteCond %{REQUEST_URI} !^/dashboard/
 RewriteRule ^(.*)$ dashboard/$1 [L,QSA]
 
-# Route wildcard subdomains to their template folders
+# Route wildcard subdomains to their template folders in design/
 RewriteCond %{HTTP_HOST} !^(www|app)\. [NC]
 RewriteCond %{HTTP_HOST} ^([^.]+)\.seutastali\.(id|me)$ [NC]
 RewriteCond %{ENV:REDIRECT_STATUS} ^$
-RewriteCond %{DOCUMENT_ROOT}/templates/%1/$1 -f [OR]
-RewriteCond %{DOCUMENT_ROOT}/templates/%1/$1 -d [OR]
-RewriteCond %{DOCUMENT_ROOT}/templates/%1/$1.php -f [OR]
+RewriteCond %{DOCUMENT_ROOT}/design/%1/$1 -f [OR]
+RewriteCond %{DOCUMENT_ROOT}/design/%1/$1 -d [OR]
+RewriteCond %{DOCUMENT_ROOT}/design/%1/$1.php -f [OR]
 RewriteCond %{REQUEST_URI} ^/$
-RewriteRule ^(.*)$ templates/%1/$1 [L,QSA]
+RewriteRule ^(.*)$ design/%1/$1 [L,QSA]
+
 
 # Block access to sensitive folders
 RewriteRule ^config/ - [F,L]

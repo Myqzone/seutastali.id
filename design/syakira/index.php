@@ -56,7 +56,7 @@ $formatted_date = ($days_id[date('l',$date_timestamp)] ?? date('l',$date_timesta
         <div class="desktop-left-overlay">
           <p class="dl-label">The Wedding of</p>
           <h2 class="dl-names"><span id="desktop-groom-display"><?= $groom_name ?></span> <span class="dl-amp">&amp;</span> <span id="desktop-bride-display"><?= $bride_name ?></span></h2>
-          <p class="dl-date"><?= $formatted_date ?></p>
+          <p class="dl-date" id="desktop-date-display"><?= $formatted_date ?></p>
         </div>
       </div>
 
@@ -77,8 +77,9 @@ $formatted_date = ($days_id[date('l',$date_timestamp)] ?? date('l',$date_timesta
   <script src="assets/main.js"></script>
   <script>initCountdown("<?= $wedding_date ?>");</script>
 
-  <?php include ROOT_PATH . 'includes/sections/btn-editor.php'; ?>
+  <?php include ROOT_PATH . 'includes/sections/seutasbox.php'; ?>
   <?php include ROOT_PATH . 'includes/sections/security.php'; ?>
+
 
 </body>
 </html>

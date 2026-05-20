@@ -250,21 +250,21 @@ include(ROOT_PATH . 'includes/head.php');
         <div class="splide__list">
           <div class="splide__slide item">
             <div class="bio-card-wrapper text-center">
-              <a href="templates/syakira/" target="_blank" class="bio-banner-link">
+              <a href="design/syakira/" target="_blank" class="bio-banner-link">
                 <img src="<?= ASSETS_URL ?>media/template/3.webp" alt="Template Syakira" class="img-fluid bio-media-element" style="border: 2px solid var(--c-dark-charcoal); border-radius: 0;">
               </a>
             </div>
           </div>
           <div class="splide__slide item">
             <div class="bio-card-wrapper text-center">
-              <a href="templates/katsudoto/" target="_blank" class="bio-banner-link">
+              <a href="design/katsudoto/" target="_blank" class="bio-banner-link">
                 <img src="<?= ASSETS_URL ?>media/template/1.webp" alt="Template Katsudoto" class="img-fluid bio-media-element" style="border: 2px solid var(--c-dark-charcoal); border-radius: 0;">
               </a>
             </div>
           </div>
           <div class="splide__slide item">
             <div class="bio-card-wrapper text-center">
-              <a href="templates/minimalis/" target="_blank" class="bio-banner-link">
+              <a href="design/minimalis/" target="_blank" class="bio-banner-link">
                 <img src="<?= ASSETS_URL ?>media/template/5.webp" alt="Template Minimalis" class="img-fluid bio-media-element" style="border: 2px solid var(--c-dark-charcoal); border-radius: 0;">
               </a>
             </div>

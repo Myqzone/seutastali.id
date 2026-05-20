@@ -108,7 +108,7 @@
     /* Wider cards for premium look */
     --hero-slider-gap: 1vw;
     /* Tight gap */
-    height: 26vw;
+    height: 28vw;
     /* Outer layout height for desktop */
     perspective: 1600px;
     /* Low perspective for deep inward 3D curve like Image 1 */

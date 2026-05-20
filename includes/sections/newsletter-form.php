@@ -23,9 +23,9 @@
                         <div class="col-12 col-lg-6">
                             <p class="mb-3 text-center text-lg-start">Stay up to date</p>
                             <div id="subscribeFormWrapper">
-                                <form id="newsletterForm" class="d-flex flex-column flex-sm-row align-items-stretch gap-2" novalidate>
-                                    <input type="email" name="newsletter_email" class="form-control rounded-pill" placeholder="Enter your email" required>
-                                    <button type="submit" class="btn btn-primary w-100 w-lg-auto flex-shrink-0">
+                                <form id="newsletterForm" class="d-flex flex-column flex-lg-row align-items-stretch gap-2" novalidate>
+                                    <input type="email" name="newsletter_email" class="form-control rounded-pill flex-grow-1" placeholder="Enter your email" required>
+                                    <button type="submit" class="btn btn-primary flex-shrink-0">
                                         Subscribe
                                     </button>
                                 </form>
