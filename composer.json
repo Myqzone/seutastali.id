@@ -1,0 +1,20 @@
+{
+    "name": "klinik-samiaji/app",
+    "description": "Klinik Samiaji Management System",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "phpmailer/phpmailer": "^6.8",
+        "midtrans/midtrans-php": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "7.4"
+        }
+    }
+}

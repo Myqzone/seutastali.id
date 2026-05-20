@@ -1,0 +1,174 @@
+/* =====================================================
+   PREMIUM LIGHTWEIGHT TEMPLATE SLIDER CSS (Owl Carousel)
+   ===================================================== */
+
+/* -----------------------------------------------------
+   1. SLIDER CONTAINER & NAVIGATION CONTROLS
+   ----------------------------------------------------- */
+.template-slider-container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden; /* Prevent horizontal page scrollbars on card scale/hover */
+  padding: 0; /* Full bleed on mobile and tablets so swiping is seamless */
+}
+
+/* Add vertical headroom to prevent hover scale clipping and edge border clipping */
+.splide__track {
+  padding: 16px 0 !important;
+}
+
+
+/* Ensure Splide slide items take full height and layout cleanly */
+.splide__slide {
+  display: flex;
+  flex-direction: column;
+  height: auto !important;
+}
+
+/* Premium Minimalist Left/Right Arrow Navigation Buttons (Icon Only) */
+.template-slider-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--c-primary) !important; /* Brand primary color */
+  font-size: 1.8rem !important; /* Elegant size */
+  text-shadow: none !important; /* No text-shadow */
+  display: none !important; /* Completely hidden on mobile & tablets by default */
+  align-items: center;
+  justify-content: center;
+  z-index: 25 !important;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+.template-slider-nav-btn:hover {
+  transform: translateY(-50%) scale(1.25);
+  color: var(--c-primary-light) !important; /* Brand secondary/lighter brand color */
+}
+
+.template-slider-nav-btn:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
+/* Desktop Viewport (992px and up) - Special layouts for arrows outside */
+@media (min-width: 992px) {
+  .template-slider-container {
+    padding: 0 45px; /* Give 45px padding on left/right for the arrows to float in */
+  }
+
+  .template-slider-nav-btn {
+    display: inline-flex !important; /* Only display on desktop viewports */
+  }
+
+  .template-slider-nav-btn.prev-btn {
+    left: 10px !important; /* Float in the left padding space outside the card grids */
+  }
+
+  .template-slider-nav-btn.next-btn {
+    right: 10px !important; /* Float in the right padding space outside the card grids */
+  }
+}
+
+/* -----------------------------------------------------
+   2. INDIVIDUAL TEMPLATE CARD STYLES
+   ----------------------------------------------------- */
+.hero-grid-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.template-grid-item {
+  box-sizing: border-box !important;
+}
+
+/* Custom Semantic Template Card styles */
+.template-card {
+  height: auto !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Elegant lift transition on hover (desktop only) */
+.template-card:hover {
+  transform: translateY(-6px) !important;
+}
+
+/* Concentric image wrapper maintaining 9:16 aspect ratio */
+.template-card-mockup {
+  aspect-ratio: 9 / 16 !important;
+  background-color: #1a1a1a !important;
+  border-radius: 16px !important; /* Matches Bootstrap rounded-4 (16px) perfectly at p-0 */
+  border: 3px solid var(--c-primary) !important;
+}
+
+/* Mockup image transitions and mathematically concentric inner rounding */
+.template-card-image {
+  border-radius: 13px !important; /* Math: 16px (outer) - 3px (border) = 13px */
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  -webkit-user-drag: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Image zoom effect on card hover (desktop only) */
+.template-card:hover .template-card-image {
+  transform: scale(1.06) !important;
+}
+
+/* Reusable small capsule badge helper for custom sizing and crisp borders */
+span.badge.template-card-badge {
+  font-size: 9px !important;
+  padding: 4px 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  letter-spacing: 0.5px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+
+/* Custom interactive button overlay style */
+.template-card-btn {
+  font-size: 13px !important;
+  border: 2px solid var(--c-primary) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease !important;
+}
+
+/* Button interactive hover rules */
+.template-hover-btn-wrapper .btn:hover {
+  background-color: var(--c-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--c-primary) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Typography titles spacing */
+.template-card-title {
+  font-size: 15px !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Mobile responsive card adjustments */
+@media (max-width: 768px) {
+  .template-card-mockup {
+    border-width: 2.5px !important;
+  }
+  .template-card-image {
+    border-radius: 13.5px !important; /* Math: 16px (outer) - 2.5px (border) = 13.5px */
+  }
+  /* Disable hover lift and zoom animations on mobile view to avoid sticky touch states */
+  .template-card:hover {
+    transform: none !important;
+  }
+  .template-card:hover .template-card-image {
+    transform: none !important;
+  }
+}

@@ -1,0 +1,26 @@
+/* ============================================================
+   STATE PAGES - Minimal CSS Tweaks
+   Bootstrap classes handle most styling, this file for tweaks
+   ============================================================ */
+
+/* Button hover effects */
+.btn-outline-primary,
+.btn-primary {
+  transition: all 0.2s ease !important;
+  border-radius: 50px;
+  border: 2px solid;
+}
+
+.btn-outline-primary {
+  border-color: var(--c-primary);
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  transform: translateY(-4px) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  transform: translateY(-4px) !important;
+}

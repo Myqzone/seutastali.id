@@ -1,0 +1,100 @@
+# ============================================================
+# SeutasTali - Git Ignore File
+# ============================================================
+
+# Environment Variables - NEVER COMMIT SECRETS
+.env
+.env.local
+.env.*.local
+config/.env
+.env.*.php
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+.phpstorm.meta.php
+_ide_helper.php
+*.iml
+
+# Uploads & Temporary Files
+/assets/uploads/
+/assets/uploads/payments/
+/assets/uploads/profiles/
+/app/assets/uploads/
+**/uploads/
+/tmp/
+/temp/
+*.log
+*.tmp
+*.bak
+
+# Storage - Project Specific
+/storage/logs/*.log
+!/storage/logs/.gitkeep
+/storage/cache/
+/storage/temp/
+
+# SQL Backups - Exclude raw sql dumps
+*.sql
+*.sql.gz
+*.sql.backup
+
+# Composer Dependencies
+/vendor/
+**/vendor/
+!assets/vendor/owlcarousel/
+!assets/vendor/owlcarousel/assets/
+composer.lock
+
+# OS Generated Files
+Thumbs.db
+.directory
+.AppleDouble
+.LSOverride
+.TemporaryItems
+.VolumeIcon.icns
+
+# Node.js (if using frontend build tools)
+node_modules/
+dist/
+build/
+package-lock.json
+yarn.lock
+
+# Testing & Coverage
+coverage/
+.phpunit.result.cache
+test-results/
+*.coverage
+
+# Git Configuration (should not be tracked)
+.git/
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# Backup & Recovery Files
+*.backup
+*.orig
+*.rej
+
+# Sensitive Configuration Files
+config/secret*.php
+secrets/
+.htpasswd
+
+# Cache Directories
+/.cache/
+/cache/
+*.cache
+
+# Test Files
+test_*.php
+*_test.php

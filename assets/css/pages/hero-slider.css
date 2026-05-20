@@ -1,0 +1,74 @@
+/* ============================================================
+   INFINITE RUNNING MARQUEE SLIDER (HERO TEMPLATES PREVIEW)
+   ============================================================ */
+
+.hero-slider-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 1.5rem 0;
+  display: flex;
+  user-select: none;
+}
+
+.hero-slider-track {
+  display: flex;
+  width: max-content;
+  animation: scrollRight 48s linear infinite; /* 48s duration for relaxed infinite scroll */
+  will-change: transform;
+}
+
+.hero-slider-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Premium Flat Card Layout (Lurus Saja, Gede & Panjang, Tanpa Shadow) */
+.hero-slider-card {
+  flex-shrink: 0;
+  width: 170px;
+  height: auto !important;
+  aspect-ratio: 9 / 16 !important;
+  border-radius: 12px; /* Standardized refined rounded corner */
+  overflow: hidden;
+  background: var(--c-white, #ffffff);
+  border: 3px solid var(--c-primary, #8B4A3E);
+  box-shadow: none !important;
+  transition: transform 0.4s ease;
+  pointer-events: none; /* User cannot click/drag images */
+  margin-right: 1rem; /* Mathematically perfect gap for seamless looping */
+}
+
+.hero-slider-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Right-running seamless animation keyframe */
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+/* Responsive constraints */
+@media (max-width: 768px) {
+  .hero-slider-card {
+    width: 150px;
+    height: auto !important;
+    aspect-ratio: 9 / 16 !important;
+    border-radius: 12px;
+    border-width: 2.5px;
+    box-shadow: none !important;
+    margin-right: 1rem; /* Balanced gap on mobile */
+  }
+  .hero-slider-track {
+    animation-duration: 35s; /* 35s duration for a slower, smooth scroll on mobile */
+  }
+}

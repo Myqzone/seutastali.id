@@ -1,0 +1,145 @@
+# =================================================================
+# /.htaccess - Flat Structure Landing Page
+# No public/ folder - direct access to files
+# =================================================================
+
+# Options -Indexes +SymLinksIfOwnerMatch
+RewriteEngine On
+RewriteBase /
+
+# Force HTTPS safely across addon domains and subdomains
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# CSP headers for cross-origin font loading (e-rsa approach)
+<IfModule mod_headers.c>
+    # Content Security Policy - Allow fonts from all origins
+    Header set Content-Security-Policy "default-src 'self' * 'unsafe-inline' 'unsafe-eval' data: blob:; script-src 'self' * 'unsafe-inline' 'unsafe-eval' data: blob:; style-src 'self' * 'unsafe-inline' 'unsafe-eval' data: blob:; img-src 'self' * data: blob:; font-src 'self' * data: blob:; frame-src 'self' *; connect-src 'self' *;"
+    Header always unset Permissions-Policy
+    
+    # CORS headers for all requests
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    Header always set Access-Control-Max-Age "86400"
+    
+    # Handle pre-flight requests
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule ^(.*)$ $1 [R=200,L]
+    
+    # Remove X-Frame-Options for bio.php preview in iframe
+    <FilesMatch "^bio\.php$">
+        Header always unset X-Frame-Options
+        Header set X-Frame-Options "ALLOWALL"
+        Header set Content-Security-Policy "frame-ancestors *;"
+    </FilesMatch>
+</IfModule>
+
+
+# Route app subdomain to dashboard folder
+RewriteCond %{HTTP_HOST} ^app\. [NC]
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteCond %{REQUEST_URI} !^/dashboard/
+RewriteRule ^(.*)$ dashboard/$1 [L,QSA]
+
+# Block access to sensitive folders
+RewriteRule ^config/ - [F,L]
+RewriteRule ^vendor/ - [F,L]
+RewriteRule ^storage/ - [F,L]
+RewriteRule ^app/ - [F,L]
+RewriteRule ^\.env - [F,L]
+RewriteRule ^composer\.(json|lock) - [F,L]
+RewriteRule ^package(-lock)?\.json - [F,L]
+
+# Protect dotfiles (.env, .git, dll)
+<FilesMatch "^\.">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Redirect index.php to root
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+index\.php[\s?] [NC]
+RewriteRule ^ / [R=301,L]
+
+# Redirect external .php requests to extensionless URLs (excluding api/)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s/+(?!api/)(.+)\.php[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Clean URLs - remove .php extension
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ $1.php [L]
+
+# API endpoints - allow direct access
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^api/(.*)$ api/$1 [L]
+
+# Performance Optimization
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/ico "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# CORS headers for cross-origin font loading between subdomains
+<IfModule mod_headers.c>
+    # Handle pre-flight OPTIONS requests
+    RewriteEngine On
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule ^(.*)$ $1 [R=200,L]
+    
+    # Set CORS headers for all requests
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    Header always set Access-Control-Max-Age "86400"
+    
+    # Specific headers for font files
+    <FilesMatch "\.(woff|woff2|ttf|eot|otf)$">
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, HEAD, OPTIONS"
+        Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
+        Header set Access-Control-Max-Age "86400"
+        Header set Content-Type "application/font-woff2"
+    </FilesMatch>
+    
+    # For woff2 specifically
+    <FilesMatch "\.woff2$">
+        Header set Content-Type "application/font-woff2"
+    </FilesMatch>
+    
+    # For ttf specifically
+    <FilesMatch "\.ttf$">
+        Header set Content-Type "font/ttf"
+    </FilesMatch>
+</IfModule>
+
+# Default index
+DirectoryIndex index.php index.html

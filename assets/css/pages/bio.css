@@ -1,0 +1,238 @@
+/* ============================================================
+   SEUTASTALI BIO STYLE (Adapted from Klinik Samiaji)
+   Location: assets/css/pages/bio.css
+   ============================================================ */
+
+:root {
+    --c-primary: #8B4A3E;            /* Terracotta SeutasTali */
+    --c-primary-dark: #6F362C;       /* Terracotta Dark Hover */
+    --c-bg-cream: #FAF6F0;           /* Cream canvas */
+    --c-dark-charcoal: #1E1E1E;      /* Neubrutalist black */
+    --c-sand: #D9C5B2;
+    --c-sand-light: #E8DCC4;
+}
+
+.bio {
+    padding: 5rem;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.bio-link {
+    position: relative !important;
+    background: var(--c-primary);
+    color: #ffffff !important;
+    padding: 15px 90px;
+    border-radius: 100px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid var(--c-dark-charcoal);
+    box-shadow: 0 8px 0 var(--c-dark-charcoal);
+    transition: all 0.3s ease;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 65px;
+}
+
+.bio-link-grid {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px;
+    width: 100%;
+    justify-content: center !important;
+    position: relative !important;
+}
+
+.bio-link-text {
+    flex: 1;
+    text-align: center !important;
+    display: block;
+    margin: 0;
+    letter-spacing: 0.03em;
+}
+
+.bio-link-icon {
+    position: absolute !important;
+    left: 1.5rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none;
+    text-align: center !important;
+    box-sizing: border-box !important;
+}
+
+.bio-link-grid > :last-child {
+    position: absolute;
+    right: 16px;
+}
+
+.bio .badge {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--c-bg-cream);
+    color: var(--c-primary);
+    border: 1px solid var(--c-dark-charcoal);
+    font-weight: 700;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    border-radius: 50px !important;
+    padding: 5px 12px;
+    font-size: 0.75rem;
+}
+
+.bio-link:hover .badge {
+    background: #ffffff !important;
+    color: var(--c-primary-dark) !important;
+}
+
+.bio-link:hover {
+    background: var(--c-primary-dark);
+    color: #ffffff !important;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 0 var(--c-dark-charcoal);
+}
+
+.bio-link:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 var(--c-dark-charcoal);
+}
+
+.bio-link.disabled {
+    cursor: not-allowed !important;
+    opacity: 0.7;
+    filter: grayscale(0.5);
+}
+
+.bio .bg-light {
+    background-color: var(--c-bg-cream) !important;
+}
+
+.bio p {
+    color: var(--c-dark-charcoal);
+}
+
+.bio footer {
+    color: var(--c-dark-charcoal);
+    font-size: 0.9rem;
+    padding: 3rem 0;
+    font-weight: 700;
+}
+
+.bio .accordion-item {
+    background-color: #ffffff;
+    border: 3px solid var(--c-dark-charcoal) !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    box-shadow: 0 6px 0 var(--c-dark-charcoal);
+    margin-bottom: 20px;
+}
+
+.bio .accordion-button {
+    background: transparent !important;
+    border: none !important;
+    padding: 1.5rem;
+    box-shadow: none !important;
+    color: var(--c-dark-charcoal) !important;
+    font-weight: 800;
+}
+
+.bio .accordion-button .logo {
+    object-fit: contain;
+    width: 120px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.bio .accordion-button h4 {
+    font-weight: 800;
+    font-size: 1.35rem;
+    margin: 0;
+}
+
+.bio .accordion-button::after {
+    background-image: none !important;
+    content: "\f078" !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    width: auto !important;
+    height: auto !important;
+    font-size: 1.1rem;
+    color: var(--c-primary);
+    transition: transform 0.3s ease;
+}
+
+.bio .accordion-button:not(.collapsed)::after {
+    transform: rotate(180deg);
+}
+
+.bio .accordion-body {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: var(--c-dark-charcoal);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Category Headers */
+.bio-header-text {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    color: var(--c-primary);
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+/* Carousel Banner */
+.bio-page-main-container {
+    border: 2px solid var(--c-dark-charcoal);
+    box-shadow: 0 8px 0 var(--c-dark-charcoal);
+    background: #ffffff;
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.bio-main-card-carousel .item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Mobile responsive */
+@media (max-width: 575.98px) {
+    .bio {
+        padding: 2rem 1.5rem;
+    }
+
+    .bio-link {
+        padding: 15px 45px;
+        height: 60px;
+    }
+
+    .bio .accordion-button {
+        padding: 1.2rem;
+    }
+}
+
+body.mobile {
+    background-color: var(--c-bg-cream) !important;
+    background-image: none !important;
+    color: var(--c-dark-charcoal) !important;
+    font-family: 'Manrope', sans-serif;
+}

@@ -1,0 +1,56 @@
+# ============================================================
+# SeutasTali - Robots.txt
+# ============================================================
+# Allow crawling of public landing page content only
+
+User-agent: *
+Disallow: /app/
+Disallow: /api/
+Disallow: /admin/
+Disallow: /auth/
+Disallow: /finance/
+Disallow: /marcom/
+Disallow: /parent/
+Disallow: /staff/
+Disallow: /developer/
+Disallow: /state/
+Disallow: /includes/
+Disallow: /config/
+Disallow: /storage/
+Disallow: /vendor/
+Disallow: /bin/
+Disallow: /Dashboard/
+Disallow: /*.php$
+Disallow: /*.json$
+Disallow: /*.log$
+Disallow: /*.env$
+Disallow: /*.sql$
+Disallow: /*.bak$
+Disallow: /*.tmp$
+
+# Allow public assets and resources
+Allow: /assets/
+Allow: /assets/css/
+Allow: /assets/js/
+Allow: /assets/media/
+Allow: /assets/vendor/
+Allow: /public/
+Allow: /sitemap.xml
+Allow: /robots.txt
+
+# Block specific crawlers from sensitive areas
+User-agent: Googlebot
+Disallow: /app/
+Disallow: /api/
+Disallow: /admin/
+
+User-agent: Bingbot
+Disallow: /app/
+Disallow: /api/
+Disallow: /admin/
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://seutastali.id/sitemap.xml

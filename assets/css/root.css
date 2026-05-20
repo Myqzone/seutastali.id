@@ -1,0 +1,128 @@
+/* Import Fonts & Icons */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    /* ============================================================
+     SEUTASTALI ROOT VARIABLES
+     Luxury Burgundy & Sand Palette
+     ============================================================ */
+
+    /* Core Brand Colors */
+    --c-maroon: #500701;
+    --c-purple: #4B0082;
+    --c-gold: #ecca6c;
+    --c-sand: #FDF9F0;
+    --c-sand-dark: #f3efe3;
+    --c-white: #ffffff;
+    
+    /* Semantic Branding */
+    --c-primary: var(--c-maroon);
+    --c-secondary: var(--c-purple);
+    --c-bg-light: var(--c-sand);
+    --c-text-dark: #1a1a1a;
+    
+    /* Primary Shade Variants */
+    --c-primary-light: #a02020;
+    --c-primary-dark: #600000;
+    --c-primary-darker: #2a060a;
+    --c-primary-rgb: 80, 7, 1;
+    --c-white-rgb: 255, 255, 255;
+    
+    /* Legacy / Clean Alias Tokens */
+    --maroon: var(--c-maroon);
+    --purple: var(--c-purple);
+    --primary: var(--c-primary);
+    --sand: var(--c-sand);
+    --sand-dark: var(--c-sand-dark);
+    --gold: var(--c-gold);
+    --primary-light: var(--c-primary-light);
+    --primary-dark: var(--c-primary-dark);
+    --primary-darker: var(--c-primary-darker);
+    --primary-rgb: var(--c-primary-rgb);
+
+    /* Grays & Borders */
+    --c-gray-border: rgba(77, 12, 18, 0.15);
+    --c-border: #e2d8c3; 
+    --c-gray-muted: #6f6f6f;
+    --c-gray-soft: #ccc;
+    --c-gray-100-static: #f4f4f4;
+    --c-gray-200-static: #e8e8e8;
+    --c-gray-dots-static: #d1d5db;
+    
+    /* Additional UI Tokens */
+    --c-danger: #dc3545;
+    --c-success-bg: #d1e7dd;
+    --c-green-light: #a3cfbb;
+    --c-success-text-dark: #0f5132;
+
+    --c-lavender: #f3f0ff;
+    --c-primary-dots: var(--c-primary);
+    --c-testimonial-border: rgba(77, 12, 18, 0.1);
+    
+    /* Services / Layanan Tokens */
+    --c-green-bg-layanan: #f0fdf4;
+    --c-green-layanan: #166534;
+    --c-blue-bg-layanan: #eff6ff;
+    --c-blue-layanan: #1e40af;
+    --c-primary-bg-layanan: #faf5ff;
+    --c-primary-layanan: #6b21a8;
+    --c-lime-bg-layanan: #f7fee7;
+    --c-lime-layanan: #4d7c0f;
+    --c-pink-bg-layanan: #fdf2f8;
+    --c-pink-layanan: #9d174d;
+    --c-orange-bg-layanan: #fff7ed;
+    --c-orange-layanan: #9a3412;
+    --c-cyan-bg-layanan: #ecfeff;
+    --c-cyan-layanan: #155e75;
+    --c-dark-text-layanan: #111827;
+    
+    /* Bootstrap & Framework Mappings */
+    --bs-white: var(--c-white);
+    --bs-dark: var(--c-primary);
+    --bs-primary: var(--c-primary);
+    --bs-primary-rgb: var(--c-primary-rgb);
+    --bs-body-bg: var(--c-bg-light);
+    --bs-body-color: var(--c-text-dark);
+    --bs-heading-color: var(--c-black);
+    --bs-font-sans-serif: 'Plus Jakarta Sans', sans-serif;
+    
+    --bs-gray-700: #4b5563;
+    --bs-gray-500: #6b7280;
+    --bs-gray-400: #9ca3af;
+    --bs-gray-light: #f3f4f6;
+    --bs-secondary-color: #6b7280;
+    --bs-secondary-border-subtle: rgba(var(--c-primary-rgb), 0.15);
+    
+    --bs-pink: #e91e63;
+    --bs-sand: var(--c-sand);
+    --bs-sand1: #f9f5eb;
+    --bs-sand2: #ede1c7;
+    --bs-sand3: #e5d5b3;
+    
+    --bs-primary-dark: var(--c-primary-darker);
+    --bs-primary-soft: #f5f0f0;
+    --bs-primary-soft-3: #e8d8d8;
+    --bs-primary-soft-4: #dfc8c8;
+    --bs-indigo: #4338ca;
+    --bs-indigo-900: #1e1b4b;
+    
+    /* Extended Semantic Tokens used in style.css */
+    --bs-primary-light: var(--c-primary-light);
+    --bs-primary-light1: #f8f0f0;
+    --bs-primary-light3: #e8d8d8;
+    
+    /* Missing Utility & Layout Tokens */
+    --bs-danger-rgb: 220, 53, 69;
+    --bs-white-rgb: var(--c-white-rgb);
+    --bs-dark-rgb: var(--c-primary-rgb);
+    --bs-pink-rgb: 233, 30, 99;
+    --bs-scrollbar-thumb: #ccc;
+    --bs-icon-size: 1.5rem;
+    --header-height: 88px;
+    
+    /* Layout Tokens */
+    --rounded-pill: 100px;
+    --rounded-1rem: 1rem;
+}
