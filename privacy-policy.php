@@ -11,29 +11,52 @@ require_once __DIR__ . '/config/bootstrap.php';
 global $conn;
 
 // Set page meta
-$page_title = 'Kebijakan Privasi - SeutasTali';
-$page_description = 'Kebijakan privasi dan perlindungan data pribadi bagi pelanggan di SeutasTali.';
+$page_title = 'Kebijakan Privasi - Seutastali';
+$page_description = 'Kebijakan privasi dan perlindungan data pribadi bagi pelanggan di Seutastali.';
 
 ob_start();
 ?>
 
-<section class="position-relative py-5 mt-3">
+<!-- Page Header Section -->
+<section class="position-relative mt-5 mt-lg-4">
     <div class="container position-relative z-3">
 
-        <!-- Page Header -->
-        <div class="mb-5">
-            <h2 class="fw-bold mb-2"><span class="text-primary">Kebijakan Privasi</span> & Hak Cipta</h2>
-            <p class="text-muted">Kebijakan Perlindungan Data Pribadi dan Hak Kekayaan Intelektual SeutasTali</p>
+        <!-- Standardized Premium Section Header with Inline Breadcrumb on Right -->
+        <div class="d-flex flex-column flex-md-row align-items-md-start justify-content-md-between gap-3 mb-3">
+
+            <!-- Left-aligned Header Title -->
+            <div class="section-header text-start mb-0 order-2 order-md-1">
+                <h1 class="hero-title text-start ms-0" style="margin-left: 0 !important; margin-bottom: 0.5rem !important;">
+                    Kebijakan <span class="text-primary fw-bold">Privasi</span>
+                </h1>
+                <p class="ms-0 text-start mb-0" style="margin-left: 0 !important; max-width: 620px;">
+                    Kebijakan Perlindungan Data Pribadi dan Hak Kekayaan Intelektual Seutastali
+                </p>
+            </div>
+
+            <!-- Right-aligned Breadcrumb Navigation -->
+            <nav aria-label="breadcrumb" class="mb-0 order-1 order-md-2 align-self-start align-self-md-start pt-md-2">
+                <ol class="breadcrumb mb-0 text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 1px;">
+                    <li class="breadcrumb-item"><a href="index.php" class="text-decoration-none text-muted">Home</a></li>
+                    <li class="breadcrumb-item active text-primary" aria-current="page">Privacy Policy</li>
+                </ol>
+            </nav>
         </div>
+    </div>
+</section>
+
+<!-- Privacy Policy Content Section -->
+<section class="pt-3 pb-5">
+    <div class="container">
 
         <!-- Content Text -->
         <div class="content-text lh-lg text-dark mb-5">
-            <p class="fw-medium mb-4">SeutasTali berkomitmen penuh untuk melindungi privasi pelanggan dan menjaga keamanan data pribadi Anda. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, menyimpan, dan melindungi informasi Anda, serta hak cipta atas produk digital kami sesuai dengan regulasi hukum yang berlaku di Republik Indonesia.</p>
+            <p class="fw-medium mb-4">Seutastali berkomitmen penuh untuk melindungi privasi pelanggan dan menjaga keamanan data pribadi Anda. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, menyimpan, dan melindungi informasi Anda, serta hak cipta atas produk digital kami sesuai dengan regulasi hukum yang berlaku di Republik Indonesia.</p>
 
             <hr class="my-4 opacity-10">
 
             <h4 class="fw-bold mt-4 mb-3 text-primary">1. Perlindungan Hak Kekayaan Intelektual</h4>
-            <p class="mb-3">Semua template, desain visual, layout, ilustrasi seni, dan aset digital lainnya yang ada di situs web SeutasTali merupakan hak kekayaan intelektual eksklusif yang dilindungi secara ketat di bawah undang-undang berikut:</p>
+            <p class="mb-3">Semua template, desain visual, layout, ilustrasi seni, dan aset digital lainnya yang ada di situs web Seutastali merupakan hak kekayaan intelektual eksklusif yang dilindungi secara ketat di bawah undang-undang berikut:</p>
             <ul class="ps-3 mb-4">
                 <li class="mb-2"><strong>Undang-Undang Hak Cipta No. 28 Tahun 2014</strong> Republik Indonesia.</li>
                 <li class="mb-2"><strong>Undang-Undang Informasi dan Transaksi Elektronik (UU ITE) No. 1 Tahun 2024</strong> (Perubahan atas UU No. 11 Tahun 2008).</li>
@@ -65,7 +88,7 @@ ob_start();
             <ul class="ps-3 mb-4">
                 <li class="mb-2">Semua transaksi pembayaran diproses secara aman menggunakan payment gateway resmi <strong>Midtrans</strong>.</li>
                 <li class="mb-2">Midtrans mematuhi standar keamanan ketat berskala internasional seperti PCI-DSS, lisensi resmi Bank Indonesia (BI), dan regulasi keamanan transaksi elektronik nasional.</li>
-                <li class="mb-2">SeutasTali <strong>tidak pernah menyimpan atau melihat data kartu kredit, PIN, atau detail akun perbankan Anda</strong> pada server kami. Seluruh proses pembayaran dilakukan secara enkripsi SSL/TLS langsung ke server Midtrans.</li>
+                <li class="mb-2">Seutastali <strong>tidak pernah menyimpan atau melihat data kartu kredit, PIN, atau detail akun perbankan Anda</strong> pada server kami. Seluruh proses pembayaran dilakukan secara enkripsi SSL/TLS langsung ke server Midtrans.</li>
             </ul>
 
             <h4 class="fw-bold mt-4 mb-3 text-primary">5. Lisensi Penggunaan Template (Usage License)</h4>
@@ -81,8 +104,8 @@ ob_start();
                 <li class="mb-2"><strong>Sifat Produk Digital:</strong> Seluruh produk kami berupa barang digital tak berwujud (digital assets) yang dikirimkan secara instan melalui sistem online. Kami tidak pernah mengirimkan paket fisik ke alamat rumah Anda.</li>
                 <li class="mb-2"><strong>Aktivasi Akses:</strong> Akses pengeditan template akan langsung diberikan secara instan setelah sistem pembayaran Midtrans menyatakan transaksi Anda berhasil secara lunas. Tautan akses dikirimkan langsung ke email atau WhatsApp Anda.</li>
                 <li class="mb-2"><strong>Tanggung Jawab Pembeli:</strong> Pembeli bertanggung jawab memberikan alamat email dan nomor WhatsApp yang valid saat proses pembayaran. Kami tidak bertanggung jawab atas kegagalan pengiriman akibat salah ketik oleh pembeli. Pembeli juga wajib menjaga kerahasiaan link edit undangan pribadi mereka agar tidak disalahgunakan orang lain.</li>
-                <li class="mb-2"><strong>Aktivitas Terlarang:</strong> Pembeli dilarang keras menyalin aset ilustrasi untuk keperluan di luar template SeutasTali, menjual lisensi template kepada pihak lain, atau mengunggah ulang file desain ke platform publik manapun.</li>
-                <li class="mb-2"><strong>Ketersediaan Layanan:</strong> SeutasTali tidak bertanggung jawab atas gangguan operasional atau downtime sistem yang disebabkan oleh pihak ketiga (seperti pemeliharaan server cloud, pemadaman server database hosting pihak ketiga, atau gangguan jaringan ISP lokal).</li>
+                <li class="mb-2"><strong>Aktivitas Terlarang:</strong> Pembeli dilarang keras menyalin aset ilustrasi untuk keperluan di luar template Seutastali, menjual lisensi template kepada pihak lain, atau mengunggah ulang file desain ke platform publik manapun.</li>
+                <li class="mb-2"><strong>Ketersediaan Layanan:</strong> Seutastali tidak bertanggung jawab atas gangguan operasional atau downtime sistem yang disebabkan oleh pihak ketiga (seperti pemeliharaan server cloud, pemadaman server database hosting pihak ketiga, atau gangguan jaringan ISP lokal).</li>
             </ul>
 
             <h4 class="fw-bold mt-4 mb-3 text-primary">7. Kebijakan Pengembalian Dana (Refund Policy Summary)</h4>
@@ -102,7 +125,7 @@ ob_start();
 
             <hr class="my-4 opacity-10">
 
-            <p class="text-muted small">Kebijakan Privasi ini terakhir diperbarui pada 17 Mei 2026 dan mengikat seluruh pengguna aktif situs SeutasTali secara hukum.</p>
+            <p class="text-muted small">Kebijakan Privasi ini terakhir diperbarui pada 17 Mei 2026 dan mengikat seluruh pengguna aktif situs Seutastali secara hukum.</p>
         </div>
 
     </div>

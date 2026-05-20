@@ -11,20 +11,43 @@ require_once __DIR__ . '/config/bootstrap.php';
 global $conn;
 
 // Set page meta
-$page_title = 'Kebijakan Pengembalian Dana - SeutasTali';
-$page_description = 'Kebijakan pembatalan dan pengembalian dana untuk produk digital SeutasTali.';
+$page_title = 'Kebijakan Pengembalian Dana - Seutastali';
+$page_description = 'Kebijakan pembatalan dan pengembalian dana untuk produk digital Seutastali.';
 
 ob_start();
 ?>
 
-<section class="position-relative py-5 mt-3">
+<!-- Page Header Section -->
+<section class="position-relative mt-5 mt-lg-4">
     <div class="container position-relative z-3">
 
-        <!-- Page Header -->
-        <div class="mb-5">
-            <h2 class="fw-bold mb-2"><span class="text-primary">Kebijakan Pengembalian Dana</span></h2>
-            <p class="text-muted">Ketentuan Pembatalan Transaksi dan Pengembalian Dana di SeutasTali</p>
+        <!-- Standardized Premium Section Header with Inline Breadcrumb on Right -->
+        <div class="d-flex flex-column flex-md-row align-items-md-start justify-content-md-between gap-3 mb-3">
+
+            <!-- Left-aligned Header Title -->
+            <div class="section-header text-start mb-0 order-2 order-md-1">
+                <h1 class="hero-title text-start ms-0" style="margin-left: 0 !important; margin-bottom: 0.5rem !important;">
+                    Kebijakan <span class="text-primary fw-bold">Refund</span>
+                </h1>
+                <p class="ms-0 text-start mb-0" style="margin-left: 0 !important; max-width: 620px;">
+                    Ketentuan Pembatalan Transaksi dan Pengembalian Dana di Seutastali
+                </p>
+            </div>
+
+            <!-- Right-aligned Breadcrumb Navigation -->
+            <nav aria-label="breadcrumb" class="mb-0 order-1 order-md-2 align-self-start align-self-md-start pt-md-2">
+                <ol class="breadcrumb mb-0 text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 1px;">
+                    <li class="breadcrumb-item"><a href="index.php" class="text-decoration-none text-muted">Home</a></li>
+                    <li class="breadcrumb-item active text-primary" aria-current="page">Refund Policy</li>
+                </ol>
+            </nav>
         </div>
+    </div>
+</section>
+
+<!-- Refund Content Section -->
+<section class="pt-3 pb-5">
+    <div class="container">
 
         <!-- Content Text -->
         <div class="content-text lh-lg text-dark mb-5">
@@ -46,7 +69,7 @@ ob_start();
 
             <hr class="my-4 opacity-10">
 
-            <p class="text-muted small">Kebijakan Pengembalian Dana ini terakhir diperbarui pada 17 Mei 2026 dan berlaku mutlak untuk seluruh transaksi di platform SeutasTali.</p>
+            <p class="text-muted small">Kebijakan Pengembalian Dana ini terakhir diperbarui pada 17 Mei 2026 dan berlaku mutlak untuk seluruh transaksi di platform Seutastali.</p>
         </div>
 
     </div>

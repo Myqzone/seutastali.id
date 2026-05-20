@@ -1,6 +1,6 @@
 <?php
 /**
- * Shared Templates Registry - SeutasTali
+ * Shared Templates Registry - Seutastali
  * Location: config/templates.php
  */
 

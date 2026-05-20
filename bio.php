@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 /**
- * Bio.php - Bio Links Page dengan Data dari Database (Rebranded for SeutasTali)
+ * Bio.php - Bio Links Page dengan Data dari Database (Rebranded for Seutastali)
  */
 
 // Load bootstrap if available
@@ -45,16 +45,16 @@ if (!defined('BASE_URL')) {
   define('BASE_URL', $protocol . '://' . $host . $currentPath . '/');
 }
 
-// Set page meta for SeutasTali
-$page_title = 'Official Links - SeutasTali';
-$page_description = 'Kumpulan link resmi, katalog undangan pernikahan premium, dan kontak admin SeutasTali.';
+// Set page meta for Seutastali
+$page_title = 'Official Links - Seutastali';
+$page_description = 'Kumpulan link resmi, katalog undangan pernikahan premium, dan kontak admin Seutastali.';
 
 // Fetch bio links from database
 $bio_links = [];
 $db_error = '';
 
 // Database table name
-$t_bio = 'seutastali_bio_links';
+$t_bio = 'dev_bio_links';
 
 if (isset($conn) && $conn instanceof mysqli && !$conn->connect_error) {
   try {
@@ -64,7 +64,7 @@ if (isset($conn) && $conn instanceof mysqli && !$conn->connect_error) {
       $db_error = "Table '$t_bio' does not exist in database. Please run the SQL command provided below to create the table.";
     } else {
       // Table exists, fetch data
-      $bio_query = "SELECT * FROM $t_bio WHERE is_active = 1 ORDER BY order_index ASC, id ASC";
+      $bio_query = "SELECT * FROM $t_bio ORDER BY sort_order ASC, id ASC";
       $bio_result = $conn->query($bio_query);
 
       if ($bio_result) {
@@ -91,14 +91,14 @@ if (isset($conn) && $conn instanceof mysqli && !$conn->connect_error) {
 }
 
 if (!function_exists('bio_escape')) {
-  function bio_escape($value)
+  function bio_escape(?string $value)
   {
     return htmlspecialchars($value ?? '', ENT_QUOTES, 'UTF-8');
   }
 }
 
 if (!function_exists('bio_is_icon_url')) {
-  function bio_is_icon_url($value)
+  function bio_is_icon_url(?string $value)
   {
     if ($value === null) {
       return false;
@@ -112,7 +112,7 @@ if (!function_exists('bio_is_icon_url')) {
 }
 
 if (!function_exists('bio_icon_token_is_class')) {
-  function bio_icon_token_is_class($token)
+  function bio_icon_token_is_class(string $token)
   {
     if ($token === '') {
       return false;
@@ -131,7 +131,7 @@ if (!function_exists('bio_icon_token_is_class')) {
 }
 
 if (!function_exists('bio_render_icon')) {
-  function bio_render_icon($value)
+  function bio_render_icon(?string $value)
   {
     $icon = trim((string)$value);
     if ($icon === '') {
@@ -173,9 +173,9 @@ if (!function_exists('bio_render_link')) {
     $href = ($url !== '' && $url !== '#') ? $url : 'javascript:void(0)';
     $hasTarget = ($href !== 'javascript:void(0)');
     $targetAttr = $hasTarget ? ' target="_blank" rel="noreferrer noopener"' : '';
-    $badgeText = trim($link['badge_text'] ?? '');
     $title = bio_escape($link['title'] ?? '');
-    $iconHtml = bio_render_icon($link['icon_class'] ?? '');
+    $iconHtml = bio_render_icon($link['icon'] ?? '');
+    $badgeText = trim($link['badge_text'] ?? '');
 
     // Only render badge if badge text is not empty (prevents Neubrutalist border bugs)
     $badgeHtml = '';
@@ -185,7 +185,7 @@ if (!function_exists('bio_render_link')) {
 
     $classes = 'bio-link bio-link-grid';
     $linkId = (int)($link['id'] ?? 0);
-    $clickCount = (int)($link['click_count'] ?? 0);
+    $clickCount = (int)($link['clicks'] ?? 0);
 
     return '<a href="' . bio_escape($href) . '" class="' . $classes . '" data-link-id="' . $linkId . '" data-click-count="' . $clickCount . '"' . $targetAttr . '>'
       . $iconHtml
@@ -231,14 +231,14 @@ include(ROOT_PATH . 'includes/head.php');
       <div class="accordion-item">
         <h2 class="accordion-header" id="bioHeadingOne">
           <button class="accordion-button collapsed d-flex align-items-center mb-0" type="button" data-bs-toggle="collapse" data-bs-target="#bioCollapseOne" aria-expanded="false" aria-controls="bioCollapseOne">
-            <img class="logo" src="<?= ASSETS_URL ?>media/logos/logo-seutastali.webp" alt="SeutasTali Profile">
+            <img class="logo" src="<?= ASSETS_URL ?>media/logo/logo-full.webp" alt="Seutastali Profile">
           </button>
         </h2>
 
         <div id="bioCollapseOne" class="accordion-collapse collapse" aria-labelledby="bioHeadingOne">
           <div class="accordion-body">
             <hr class="border-1 mb-3 mt-0">
-            SeutasTali adalah platform pembuatan undangan digital pernikahan premium terkemuka di Indonesia. Kami menghadirkan desain minimalis, elegan, dan premium (Neubrutalism) yang dirancang khusus untuk mewujudkan undangan pernikahan impian Anda secara modern dan berkesan.
+            Seutastali adalah platform pembuatan undangan digital pernikahan premium terkemuka di Indonesia. Kami menghadirkan desain minimalis, elegan, dan premium (Neubrutalism) yang dirancang khusus untuk mewujudkan undangan pernikahan impian Anda secara modern dan berkesan.
           </div>
         </div>
       </div>
@@ -250,21 +250,21 @@ include(ROOT_PATH . 'includes/head.php');
         <div class="splide__list">
           <div class="splide__slide item">
             <div class="bio-card-wrapper text-center">
-              <a href="template-detail.php?id=syakira" class="bio-banner-link">
+              <a href="templates/syakira/" target="_blank" class="bio-banner-link">
                 <img src="<?= ASSETS_URL ?>media/template/3.webp" alt="Template Syakira" class="img-fluid bio-media-element" style="border: 2px solid var(--c-dark-charcoal); border-radius: 0;">
               </a>
             </div>
           </div>
           <div class="splide__slide item">
             <div class="bio-card-wrapper text-center">
-              <a href="template-detail.php?id=katsudoto" class="bio-banner-link">
+              <a href="templates/katsudoto/" target="_blank" class="bio-banner-link">
                 <img src="<?= ASSETS_URL ?>media/template/1.webp" alt="Template Katsudoto" class="img-fluid bio-media-element" style="border: 2px solid var(--c-dark-charcoal); border-radius: 0;">
               </a>
             </div>
           </div>
           <div class="splide__slide item">
             <div class="bio-card-wrapper text-center">
-              <a href="template-detail.php?id=minimalis" class="bio-banner-link">
+              <a href="templates/minimalis/" target="_blank" class="bio-banner-link">
                 <img src="<?= ASSETS_URL ?>media/template/5.webp" alt="Template Minimalis" class="img-fluid bio-media-element" style="border: 2px solid var(--c-dark-charcoal); border-radius: 0;">
               </a>
             </div>
@@ -301,7 +301,7 @@ include(ROOT_PATH . 'includes/head.php');
       &copy; <script>
         document.write(new Date().getFullYear())
       </script>
-      SeutasTali.
+      Seutastali.
       <p class="d-block mt-1">All rights reserved.</p>
     </footer>
 
@@ -313,7 +313,7 @@ include(ROOT_PATH . 'includes/head.php');
 <!-- Splide.js CDN JS -->
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function() {
     var splide = new Splide('.bio-main-card-carousel', {
       type: 'loop',
       arrows: false,
@@ -322,6 +322,18 @@ include(ROOT_PATH . 'includes/head.php');
       interval: 3500,
       pauseOnHover: true,
       gap: '10px'
+    });
+    splide.on('mounted moved updated', function () {
+      document.querySelectorAll('.bio-main-card-carousel .splide__slide').forEach(function (slide) {
+        var isHidden = slide.getAttribute('aria-hidden') === 'true';
+        slide.querySelectorAll('a, button, input, select').forEach(function (el) {
+          if (isHidden) {
+            el.setAttribute('tabindex', '-1');
+          } else {
+            el.removeAttribute('tabindex');
+          }
+        });
+      });
     });
     splide.mount();
   });

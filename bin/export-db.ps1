@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Export/clean database Klinik Samiaji ke file SQL.
+    Export/clean database ersx8821_seutastali ke file SQL.
 
 .PARAMETER Mode
     "local" - export dari MAMP lokal
@@ -8,7 +8,7 @@
 
 .EXAMPLE
     .\export-db.ps1 -Mode local
-    .\export-db.ps1 -Mode clean -InputFile .\u370308533_klinik_samiaji_prod_raw.sql -OutputFile .\u370308533_klinik_samiaji_prod.sql
+    .\export-db.ps1 -Mode clean -InputFile .\ersx8821_seutastali_prod_raw.sql -OutputFile .\ersx8821_seutastali_prod.sql
 #>
 param(
     [ValidateSet("local", "clean")]
@@ -16,7 +16,7 @@ param(
 
     # === LOCAL (MAMP) ===
     [string]$LocalDbHost = "localhost",
-    [string]$LocalDbName = "seutastali",
+    [string]$LocalDbName = "ersx8821_seutastali",
     [string]$LocalDbUser = "root",
     [string]$LocalDbPassword = "root",
 
@@ -46,8 +46,8 @@ Write-Host "========================================" -ForegroundColor Cyan
 # MODE: CLEAN
 # ================================================================
 if ($Mode -eq "clean") {
-    if (-not $InputFile) { $InputFile = Join-Path $ScriptDir "seutastali.sql" }
-    if (-not $OutputFile) { $OutputFile = Join-Path $ScriptDir "seutastali_clean.sql" }
+    if (-not $InputFile) { $InputFile = Join-Path $ScriptDir "ersx8821_seutastali.sql" }
+    if (-not $OutputFile) { $OutputFile = Join-Path $ScriptDir "ersx8821_seutastali_clean.sql" }
 
     Write-Host "Input    : $InputFile"
     Write-Host "Output   : $OutputFile"
@@ -110,7 +110,7 @@ if ($Mode -eq "clean") {
 # ================================================================
 # MODE: LOCAL
 # ================================================================
-if (-not $OutputFile) { $OutputFile = Join-Path $ScriptDir "seutastali.sql" }
+if (-not $OutputFile) { $OutputFile = Join-Path $ScriptDir "ersx8821_seutastali.sql" }
 $TempFile = $OutputFile -replace '\.sql$', '_temp.sql'
 
 $MampPaths = @(

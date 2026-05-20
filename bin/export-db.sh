@@ -1,5 +1,5 @@
 #!/bin/bash
-# Export database u370308533_klinik_samiaji dari LOCAL (MAMP) - macOS
+# Export database ersx8821_seutastali dari LOCAL (MAMP) - macOS
 # Pure bash, tidak butuh PowerShell
 
 # ============================================================
@@ -7,14 +7,14 @@
 # ============================================================
 DB_HOST="localhost"
 DB_PORT="8889"
-DB_NAME="seutastali"
+DB_NAME="ersx8821_seutastali"
 DB_USER="root"
 DB_PASSWORD="root"
 # ============================================================
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-OUTPUT_FILE="$SCRIPT_DIR/seutastali.sql"
-TEMP_FILE="$SCRIPT_DIR/seutastali_temp.sql"
+OUTPUT_FILE="$SCRIPT_DIR/ersx8821_seutastali.sql"
+TEMP_FILE="$SCRIPT_DIR/ersx8821_seutastali_temp.sql"
 
 echo ""
 echo "========================================"

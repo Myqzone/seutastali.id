@@ -29,6 +29,7 @@ a:focus-visible,
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -95,7 +96,8 @@ section {
 }
 
 .text-muted {
-  color: rgba(var(--c-primary-rgb), 0.6) !important; /* Muted brand color derived from primary opacity */
+  color: rgba(var(--c-primary-rgb), 0.6) !important;
+  /* Muted brand color derived from primary opacity */
 }
 
 .btn-primary {
@@ -135,7 +137,8 @@ section {
 .badge.bg-primary-light {
   background-color: var(--c-primary-light) !important;
   color: var(--c-white) !important;
-  opacity: 0.15; /* Subtler badge background */
+  opacity: 0.15;
+  /* Subtler badge background */
 }
 
 
@@ -340,7 +343,7 @@ p {
 }
 
 .accordion-item {
- color: var(--c-primary-dark);
+  color: var(--c-primary-dark);
   transition: all 0.3s ease !important;
   box-shadow: none !important;
 }
@@ -582,7 +585,8 @@ p {
 .nav-link {
   font-weight: 500;
   color: var(--bs-primary-dark);
-  padding: 0 1rem !important; /* py-2 px-3 equivalent */
+  padding: 0 1rem !important;
+  /* py-2 px-3 equivalent */
 }
 
 .nav-link:hover {
@@ -620,7 +624,7 @@ p {
 }
 
 .header.fixed-header {
-  background-color: rgba(253, 249, 240, 0.75); 
+  background-color: rgba(253, 249, 240, 0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--c-border);
@@ -642,11 +646,18 @@ p {
   justify-content: center;
   align-items: center;
   gap: 5px;
+  width: 44px;
+  /* Expanded click target width */
+  height: 44px;
+  /* Expanded click target height */
+  margin-right: -10px;
+  /* Align the visual lines perfectly with the right margin */
   padding: 0;
   z-index: 2000;
   transition: all 0.3s ease;
   box-shadow: none !important;
   outline: none !important;
+  cursor: pointer;
 }
 
 .custom-hamburger:focus,
@@ -679,8 +690,10 @@ body.modal-open .custom-hamburger .line-2 {
   margin-top: auto !important;
   align-items: flex-end;
   display: flex;
-  min-height: 100%; /* Fallback for legacy devices */
-  min-height: 100dvh; /* Accurate visible height on mobile Safari/Chrome */
+  min-height: 100%;
+  /* Fallback for legacy devices */
+  min-height: 100dvh;
+  /* Accurate visible height on mobile Safari/Chrome */
   max-width: 100% !important;
   width: 100% !important;
 }
@@ -690,10 +703,25 @@ body.modal-open .custom-hamburger .line-2 {
   background-color: var(--bs-sand);
   border: none;
   padding-bottom: env(safe-area-inset-bottom);
+  position: relative;
+  overflow: visible !important; /* Ensure the bleed-down pseudo-element is not clipped */
+}
+
+/* Background Bleeding to cover safe-area/Safari address bar gaps at the bottom of iPhone screen */
+.bottom-sheet-modal .modal-content::after {
+  content: "";
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background-color: var(--bs-sand);
+  z-index: -1;
 }
 
 .bottom-sheet-modal .nav-link {
-  font-size: 1.15rem; /* Ukuran font premium yang nyaman dibaca */
+  font-size: 1.15rem;
+  /* Ukuran font premium yang nyaman dibaca */
   display: inline-block;
   transition: all 0.2s ease;
 }
@@ -1313,11 +1341,13 @@ footer .copyright {
   }
 }
 
-footer .footer-menu a,.copyright a {
+footer .footer-menu a,
+.copyright a {
   font-size: 1rem;
 }
 
-footer .footer-menu a:hover,.copyright a:hover {
+footer .footer-menu a:hover,
+.copyright a:hover {
   text-decoration: underline;
 }
 
@@ -1705,19 +1735,23 @@ body.mobile {
    COMPARISON TABLE ROW HEIGHT, PADDING & FONT SIZES
    ============================================================ */
 .brand-comparison-table {
-  font-size: 0.85rem !important; /* Smaller than standard body font size */
+  font-size: 0.85rem !important;
+  /* Smaller than standard body font size */
 }
 
 .brand-comparison-table th,
 .brand-comparison-table td {
-  padding-top: 1.5rem !important; /* Luxurious row vertical spacing */
+  padding-top: 1.5rem !important;
+  /* Luxurious row vertical spacing */
   padding-bottom: 1.5rem !important;
 }
 
 @media (max-width: 768px) {
   .brand-comparison-table {
-    font-size: 0.75rem !important; /* Crisp and super compact mobile font size */
+    font-size: 0.75rem !important;
+    /* Crisp and super compact mobile font size */
   }
+
   .brand-comparison-table th,
   .brand-comparison-table td {
     padding-bottom: 1.1rem !important;
@@ -1730,7 +1764,8 @@ body.mobile {
 
 /* 1. SECTION HEADERS */
 .section-header {
-  margin-bottom: 2rem !important; /* Spacing from header to section content */
+  margin-bottom: 2rem !important;
+  /* Spacing from header to section content */
   text-align: center;
 }
 
@@ -1739,22 +1774,32 @@ body.mobile {
   font-weight: 600 !important;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 1rem !important; /* Spacing badge to title (mb-3 equivalent) */
+  margin-bottom: 2rem !important;
+  /* Spacing badge to title (mb-3 equivalent) */
   display: inline-block;
 }
 
 .section-header h1,
 .section-header h2 {
-  font-size: 2.25rem !important; /* Standardized desktop font size */
+  font-size: 2.25rem !important;
+  /* Standardized desktop font size */
   line-height: 1.25 !important;
   color: var(--c-primary-darker) !important;
   margin-top: 0 !important;
-  margin-bottom: 1rem !important; /* Spacing title to description (mb-3 equivalent) */
+  margin-bottom: 1rem !important;
+  /* Spacing title to description (mb-3 equivalent) */
+}
+
+.section-header h1 span.text-primary,
+.section-header h2 span.text-primary,
+.section-header .text-primary {
+  font-weight: 700 !important;
 }
 
 .section-header p {
   font-size: 0.95rem !important;
-  color: rgba(80, 7, 1, 0.65) !important; /* Elegant warm brand-based description */
+  color: rgba(80, 7, 1, 0.65) !important;
+  /* Elegant warm brand-based description */
   max-width: 620px;
   margin-left: auto !important;
   margin-right: auto !important;
@@ -1764,7 +1809,8 @@ body.mobile {
 
 /* 2. SECTION FOOTERS (Bottom Centered Buttons) */
 .section-footer {
-  margin-top: 2rem !important; /* Spacing from section content to bottom CTA button */
+  margin-top: 2rem !important;
+  /* Spacing from section content to bottom CTA button */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1774,12 +1820,12 @@ body.mobile {
 @media (max-width: 768px) {
   .section-header {
     margin-bottom: 0rem !important;
-    padding: 0 1.5rem 1.5rem !important;
   }
 
   .section-header h1,
   .section-header h2 {
-    font-size: 1.75rem !important; /* Mobile font scale */
+    font-size: 1.75rem !important;
+    /* Mobile font scale */
   }
 
   .section-header p {
@@ -1796,8 +1842,7 @@ body.mobile {
    ============================================================ */
 @media (max-width: 768px) {
   .container {
-    padding-left: 5% !important;
-    padding-right: 5% !important;
+    padding: 0 6% !important;
   }
 }
 
@@ -1823,7 +1868,8 @@ body.mobile {
   color: var(--c-primary-darker) !important;
   font-size: 1rem !important;
   font-weight: 500 !important;
-  padding: 1.25rem 0.5rem !important; /* Spacious flat spacing */
+  padding: 1.25rem 0.5rem !important;
+  /* Spacious flat spacing */
   display: flex;
   align-items: center;
   text-align: left;
@@ -1836,7 +1882,8 @@ body.mobile {
 }
 
 .brand-faq-accordion .accordion-button::after {
-  display: none !important; /* Hide default bootstrap right chevron */
+  display: none !important;
+  /* Hide default bootstrap right chevron */
 }
 
 .brand-faq-accordion .accordion-button .faq-icon {
@@ -1859,7 +1906,8 @@ body.mobile {
 }
 
 .brand-faq-accordion .accordion-body {
-  padding: 0 0.5rem 1.5rem 3rem !important; /* Elegant indentation aligning with question text */
+  padding: 0 0.5rem 1.5rem 3rem !important;
+  /* Elegant indentation aligning with question text */
   font-size: 0.925rem;
   line-height: 1.6;
   color: rgba(var(--c-primary-rgb), 0.7);
@@ -1871,12 +1919,12 @@ body.mobile {
     font-size: 0.9rem !important;
     padding: 1rem 0.25rem !important;
   }
-  
+
   .brand-faq-accordion .accordion-button .faq-icon {
     font-size: 1rem;
     margin-right: 0.75rem;
   }
-  
+
   .brand-faq-accordion .accordion-body {
     padding: 0 0.25rem 1rem 2rem !important;
     font-size: 0.85rem;
@@ -1908,7 +1956,8 @@ body.mobile {
 /* Compared columns (Printed, Whatsapp - muted primary look) */
 .brand-comparison-table td:nth-child(2),
 .brand-comparison-table td:nth-child(3) {
-  color: rgba(80, 7, 1, 0.6) !important; /* Elegant 60% opacity brand maroon */
+  color: rgba(80, 7, 1, 0.6) !important;
+  /* Elegant 60% opacity brand maroon */
 }
 
 /* Seutas Tali column highlight (Primary maroon, bold) */
@@ -1932,10 +1981,3 @@ hr {
   border-top: 1px solid rgba(80, 7, 1, 0.08) !important;
   opacity: 1 !important;
 }
-
-
-
-
-
-
-

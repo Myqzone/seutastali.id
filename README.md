@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/media/logos/photoprofile.png" alt="SeutasTali Logo" width="120" height="120" style="border-radius: 50%;">
+  <img src="assets/media/logo/pp-seutastali.png" alt="SeutasTali Logo" width="120" height="120" style="border-radius: 50%;">
   
   # SeutasTali Web Ecosystem
   

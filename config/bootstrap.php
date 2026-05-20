@@ -130,6 +130,24 @@ if ($envBaseUrl !== '' && $envStaticUrl !== '') {
     // 2. Auto-detect subdomain mode
     $isAppSubdomain = (strpos($host, 'app.') === 0);
 
+    // Check for wildcard template subdomain (e.g., syakira.seutastali.id)
+    $isTemplateSubdomain = false;
+    $templateSubdomainName = '';
+    $parts = explode('.', $host);
+    if (count($parts) > 2 && !filter_var($host, FILTER_VALIDATE_IP) && $parts[0] !== 'www' && $parts[0] !== 'app') {
+        if (in_array('seutastali', $parts)) {
+            $isTemplateSubdomain = true;
+            $templateSubdomainName = $parts[0];
+        }
+    }
+
+    $mainHost = $host;
+    if ($isAppSubdomain) {
+        $mainHost = substr($host, 4);
+    } elseif ($isTemplateSubdomain) {
+        $mainHost = substr($host, strlen($templateSubdomainName) + 1);
+    }
+
     // 3. Define BASE_URL (current URL with trailing slash)
     $currentPath = dirname($script);
     if ($currentPath === '/' || $currentPath === '\\') {
@@ -138,9 +156,7 @@ if ($envBaseUrl !== '' && $envStaticUrl !== '') {
     define('BASE_URL', $origin . $currentPath . '/');
 
     // 4. Define STATIC_URL (main domain for shared assets)
-    if ($isAppSubdomain) {
-        // Remove 'app.' prefix for main site
-        $mainHost = substr($host, 4);
+    if ($isAppSubdomain || $isTemplateSubdomain) {
         define('STATIC_URL', $scheme . '://' . $mainHost . '/');
     } else {
         define('STATIC_URL', BASE_URL);

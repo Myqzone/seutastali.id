@@ -1,16 +1,8 @@
-<?php
-// Define STATIC_URL if not already defined
-if (!defined('STATIC_URL')) {
-  if (!defined('ROOT_PATH')) {
-    $root = realpath(__DIR__ . '/../..');
-    define('ROOT_PATH', rtrim($root, '/\\') . DIRECTORY_SEPARATOR);
-  }
-  require_once ROOT_PATH . 'config/app.php';
-}
-?>
-<link rel="icon" type="image/webp" href="/assets/media/logos/logo-mark.webp">
-<link rel="apple-touch-icon" href="/assets/media/logos/logo-mark.webp">
-<link rel="manifest" href="/assets/media/ico/manifest.json">
-<meta name="msapplication-TileColor" content="#4d0c12">
-<meta name="msapplication-TileImage" content="/assets/media/logos/logo-mark.webp">
-<meta name="theme-color" content="#4d0c12">
+<!-- Copy & paste the code below into your <head> section [Credit to https://favicongenerator.io] -->
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/media/ico/favicon-96x96.png?v=2">
+<link rel="icon" href="/assets/media/ico/favicon.svg?v=2" type="image/svg+xml" sizes="any">
+<link rel="icon" href="/assets/media/ico/favicon.ico?v=2">
+<link rel="apple-touch-icon" href="/assets/media/ico/apple-touch-icon.png?v=2">
+<link rel="manifest" href="/assets/media/ico/site.webmanifest?v=2">
+<meta name="theme-color" content="#FDF9F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#500701" media="(prefers-color-scheme: dark)">

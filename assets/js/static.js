@@ -127,9 +127,7 @@ $(document).ready(function () {
     text.toggleClass("clamp");
     btn.text(text.hasClass("clamp") ? "Read More" : "Read Less");
   });
-
 });
-
 
 /* COUNTER VALUE ANIMATION */
 document.addEventListener("DOMContentLoaded", () => {
@@ -181,8 +179,8 @@ document.addEventListener("DOMContentLoaded", () => {
   /* AOS & TOOLTIPS (Snappy & Responsive Initialization) */
   if (typeof AOS !== "undefined") {
     AOS.init({
-      once: true,
-      mirror: false,
+      once: false,
+      mirror: true,
       duration: 500, // Snappy fade duration
     });
   }

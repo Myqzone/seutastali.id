@@ -6,20 +6,43 @@ require_once __DIR__ . '/config/bootstrap.php';
 global $conn;
 
 // Set page meta
-$page_title = 'Contact Us - SeutasTali';
-$page_description = 'Hubungi tim SeutasTali untuk pertanyaan atau konsultasi seputar layanan pembuatan undangan digital.';
+$page_title = 'Contact Us - Seutastali';
+$page_description = 'Hubungi tim Seutastali untuk pertanyaan atau konsultasi seputar layanan pembuatan undangan digital.';
 
 ob_start();
 ?>
 
-  <section class="position-relative py-5 mt-3">
+  <!-- Page Header Section -->
+  <section class="position-relative mt-5 mt-lg-4">
     <div class="container position-relative z-3">
 
-      <!-- Page Header -->
-      <div class="text-center mb-5">
-        <h2 class="fw-bold"><span class="text-primary">Contact</span> Us</h2>
-        <p class="text-muted">Kami siap membantu menyukseskan persiapan hari bahagia Anda</p>
+      <!-- Standardized Premium Section Header with Inline Breadcrumb on Right -->
+      <div class="d-flex flex-column flex-md-row align-items-md-start justify-content-md-between gap-3 mb-3">
+
+        <!-- Left-aligned Header Title -->
+        <div class="section-header text-start mb-0 order-2 order-md-1">
+          <h1 class="hero-title text-start ms-0" style="margin-left: 0 !important; margin-bottom: 0.5rem !important;">
+            Hubungi <span class="text-primary fw-bold">Kami</span>
+          </h1>
+          <p class="ms-0 text-start mb-0" style="margin-left: 0 !important; max-width: 620px;">
+            Kami siap membantu menyukseskan persiapan hari bahagia Anda
+          </p>
+        </div>
+
+        <!-- Right-aligned Breadcrumb Navigation -->
+        <nav aria-label="breadcrumb" class="mb-0 order-1 order-md-2 align-self-start align-self-md-start pt-md-2">
+          <ol class="breadcrumb mb-0 text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 1px;">
+            <li class="breadcrumb-item"><a href="index.php" class="text-decoration-none text-muted">Home</a></li>
+            <li class="breadcrumb-item active text-primary" aria-current="page">Contact Us</li>
+          </ol>
+        </nav>
       </div>
+    </div>
+  </section>
+
+  <!-- Contact Content Section -->
+  <section class="pt-3 pb-5">
+    <div class="container">
 
       <div class="row g-4 mb-5">
         <!-- Info Column -->

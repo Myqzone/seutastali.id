@@ -15,6 +15,7 @@ $menu_items = [
   'features' => 'Features',
   'faq' => 'FAQ'
 ];
+$nav_base_url = defined('MAIN_SITE_URL') ? MAIN_SITE_URL : (defined('BASE_URL') ? BASE_URL : '/');
 ?>
 <header class="header position-fixed start-0 top-0 w-100 fixed-header">
   <div class="container">
@@ -22,7 +23,7 @@ $menu_items = [
       <div class="d-flex align-items-center justify-content-between w-100">
 
         <a href="<?= defined('MAIN_SITE_URL') ? MAIN_SITE_URL : (defined('BASE_URL') ? BASE_URL : '/') ?>" class="logo">
-          <img src="<?= htmlspecialchars($logoUrlBase . '/media/logos/logo-seutastali.webp', ENT_QUOTES, 'UTF-8'); ?>"
+          <img src="<?= htmlspecialchars($logoUrlBase . '/media/logo/logo-full.webp', ENT_QUOTES, 'UTF-8'); ?>"
             width="120" class="img-fluid" alt="Logo">
         </a>
 
@@ -35,7 +36,7 @@ $menu_items = [
         <div class="collapse navbar-collapse" id="navbarlink">
           <ul class="navbar-nav mx-auto gap-2 p-1 rounded-pill">
             <?php foreach ($menu_items as $page => $label):
-              $href = ($page === 'index') ? './' : $page;
+              $href = ($page === 'index') ? $nav_base_url : rtrim($nav_base_url, '/') . '/' . $page;
             ?>
               <li class="nav-item">
                 <a class="nav-link <?= ($current_page == $page) ? 'active' : '' ?>" href="<?= $href ?>">
@@ -45,7 +46,7 @@ $menu_items = [
             <?php endforeach; ?>
           </ul>
           <div class="d-flex align-items-center">
-            <a href="templates" class="btn btn-primary">Pilih Template</a>
+            <a href="<?= rtrim($nav_base_url, '/') ?>/templates" class="btn btn-primary">Pilih Template</a>
           </div>
         </div>
 
@@ -65,7 +66,7 @@ $menu_items = [
         <h3 class="modal-title-custom fw-bold mb-4">Main Menu</h3>
         <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
           <?php foreach ($menu_items as $page => $label):
-            $href = ($page === 'index') ? './' : $page;
+            $href = ($page === 'index') ? $nav_base_url : rtrim($nav_base_url, '/') . '/' . $page;
           ?>
             <li>
               <a href="<?= $href ?>" class="nav-link <?= ($current_page == $page) ? 'active' : '' ?> text-decoration-none text-dark d-block py-2"><?= $label ?></a>

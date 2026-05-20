@@ -36,11 +36,24 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
 
 
+# Route exact templates directory URL to templates.php catalog page
+RewriteRule ^templates/?$ templates.php [L]
+
 # Route app subdomain to dashboard folder
 RewriteCond %{HTTP_HOST} ^app\. [NC]
 RewriteCond %{ENV:REDIRECT_STATUS} ^$
 RewriteCond %{REQUEST_URI} !^/dashboard/
 RewriteRule ^(.*)$ dashboard/$1 [L,QSA]
+
+# Route wildcard subdomains to their template folders
+RewriteCond %{HTTP_HOST} !^(www|app)\. [NC]
+RewriteCond %{HTTP_HOST} ^([^.]+)\.seutastali\.(id|me)$ [NC]
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteCond %{DOCUMENT_ROOT}/templates/%1/$1 -f [OR]
+RewriteCond %{DOCUMENT_ROOT}/templates/%1/$1 -d [OR]
+RewriteCond %{DOCUMENT_ROOT}/templates/%1/$1.php -f [OR]
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^(.*)$ templates/%1/$1 [L,QSA]
 
 # Block access to sensitive folders
 RewriteRule ^config/ - [F,L]
@@ -104,6 +117,7 @@ RewriteRule ^api/(.*)$ api/$1 [L]
     ExpiresByType image/gif "access plus 1 year"
     ExpiresByType image/ico "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
     ExpiresByType font/woff "access plus 1 year"
     ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>

@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12">
-                <div class="card h-100 rounded-4 p-4 p-lg-5" data-aos="fade-up" data-aos-delay="80" data-aos-duration="800">
+                <div class="card h-100 rounded-4 p-4 p-lg-5" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
                     <div class="card-body row align-items-center g-4">
                         <div class="col-12 col-lg-6 text-center text-lg-start">
                             <h3 class="fw-bold mb-3 fs-1">Subscribe our newsletter</h3>

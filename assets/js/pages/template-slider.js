@@ -22,27 +22,37 @@ $(document).ready(function () {
     splideInstance = new Splide('#templateSliderTrack', {
       type: 'slide',
       arrows: false,      // We use our own customized transparent arrow buttons!
-      pagination: false,  // We do not use dots
+      pagination: true,   // Show dots navigation under slider!
       drag: true,         // Allows touch/mouse swiping
       speed: 300,         // Clean, modern transition speed
       perPage: 4,         // 4 items on desktop
       perMove: 1,
-      gap: '10px',        // Gap between items
+      gap: '24px',        // Generous, premium gap between items on desktop
       breakpoints: {
         768: {
           perPage: 2,     // 2 items on mobile
-          gap: '10px'
+          gap: '12px'     // Perfect gap on mobile
         },
         992: {
           perPage: 3,     // 3 items on tablet
-          gap: '15px'
+          gap: '20px'     // Spacious gap on tablet
         }
       }
     });
 
-    // Listen to mounted and slide events to update navigation buttons
-    splideInstance.on('mounted moved updated', updateNavButtons);
+    // Listen to mounted and slide events to update navigation buttons & aria-hidden tabindexes
+    splideInstance.on('mounted moved updated', function () {
+      updateNavButtons();
+      updateSlideFocus();
+    });
     splideInstance.mount();
+
+    // Trigger AOS refresh to recalculate page coordinates after slider dynamic layout changes
+    if (typeof AOS !== 'undefined') {
+      setTimeout(function () {
+        AOS.refresh();
+      }, 50); // Snappy 50ms delay to let the DOM layout settle perfectly
+    }
 
     // Premium hover navigation buttons actions
     $("#templateSliderPrev")
@@ -86,6 +96,20 @@ $(document).ready(function () {
         .css("opacity", "1")
         .css("pointer-events", "auto");
     }
+  }
+
+  // Fix accessibility console errors (aria-hidden focusable descendants) by removing focus from hidden slides
+  function updateSlideFocus() {
+    if (!splideInstance) return;
+    $track.find(".splide__slide").each(function () {
+      const $slide = $(this);
+      const isHidden = $slide.attr("aria-hidden") === "true";
+      if (isHidden) {
+        $slide.find("a, button, input, select").attr("tabindex", "-1");
+      } else {
+        $slide.find("a, button, input, select").removeAttr("tabindex");
+      }
+    });
   }
 
   // Dynamically filter templates when user clicks category tabs

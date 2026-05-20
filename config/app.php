@@ -205,7 +205,7 @@ if (!defined('APP_PATH')) {
 
 
 // Nama Aplikasi
-if (!defined('APP_NAME')) define('APP_NAME', 'SeutasTali');
+if (!defined('APP_NAME')) define('APP_NAME', 'Seutastali');
 if (!ini_get('date.timezone')) date_default_timezone_set('Asia/Jakarta');
 
 // ===== SESSION CONFIGURATION (MUST BE BEFORE session_start()) =====
@@ -244,18 +244,6 @@ if (session_status() === PHP_SESSION_NONE) {
             session_set_cookie_params(0, '/', null, $isHttps, true);
         }
 
-        // Disable caching headers in PHP
-        ini_set('session.cache_limiter', 'nocache');
-        ini_set('session.cache_expire', 0);
-
-        // Set no-cache headers at PHP level for ALL PHP responses
-        header_remove('Pragma');
-        header_remove('Cache-Control');
-        header_remove('Expires');
-        header('Cache-Control: no-cache, no-store, must-revalidate, max-age=0, private');
-        header('Pragma: no-cache');
-        header('Expires: 0');
-
         // Set strict cookie flags
         ini_set('session.cookie_lifetime', 0);
         ini_set('session.use_only_cookies', 1);
@@ -287,6 +275,37 @@ if (session_status() === PHP_SESSION_NONE) {
     // NOW start the session
     session_start();
 }
+
+// -------------------------------------------------------------------------
+// DYNAMIC BROWSER PAGE CACHING OPTIMIZATION
+// -------------------------------------------------------------------------
+// Check if the current page is a private/authenticated page
+$isAppPage = (defined('IS_APP_SUBDOMAIN') && IS_APP_SUBDOMAIN);
+if (!$isAppPage) {
+    $scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
+    $isAppPage = (strpos($scriptName, '/app/') !== false || strpos($scriptName, '/admin/') !== false || strpos($scriptName, '/dashboard/') !== false);
+}
+
+if (!headers_sent()) {
+    // Remove default session cache headers to avoid browser confusion
+    header_remove('Pragma');
+    header_remove('Cache-Control');
+    header_remove('Expires');
+
+    if ($isAppPage) {
+        // Disable browser caching for private app/dashboard pages to protect sensitive user sessions
+        header('Cache-Control: no-cache, no-store, must-revalidate, max-age=0, private');
+        header('Pragma: no-cache');
+        header('Expires: 0');
+    } else {
+        // Enable browser caching for public landing/marketing pages for 1 hour
+        // This allows instant loading (0ms) when navigating back and forth!
+        header('Cache-Control: public, max-age=3600, must-revalidate');
+        header('Pragma: cache');
+        header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 3600) . ' GMT');
+    }
+}
+
 // Load landing page helpers
 require_once ROOT_PATH . 'config/helpers/content/page-loader.php';
 

@@ -1,5 +1,5 @@
 @echo off
-REM Export database u370308533_klinik_samiaji dari LOCAL (MAMP)
+REM Export database ersx8821_seutastali dari LOCAL (MAMP)
 REM Semua logic ada di export-db.ps1, file ini hanya launcher
 
 setlocal
@@ -8,7 +8,7 @@ REM ============================================================
 REM KONFIGURASI LOCAL
 REM ============================================================
 set DB_HOST=localhost
-set DB_NAME=seutastali
+set DB_NAME=ersx8821_seutastali
 set DB_USER=root
 set DB_PASSWORD=root
 REM ============================================================

@@ -1,74 +1,119 @@
 /* ============================================================
-   INFINITE RUNNING MARQUEE SLIDER (HERO TEMPLATES PREVIEW)
+   3D CAROUSEL HERO SLIDER (HERO TEMPLATES PREVIEW)
    ============================================================ */
 
 .hero-slider-wrapper {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  padding: 1.5rem 0;
+  overflow: visible;
+  /* Changed to visible to prevent DOM layout box clipping */
+  padding: 0;
+  /* Reset padding to 0 on mobile */
+  height: auto;
+  /* Allow scene height to control the layout height */
   display: flex;
+  justify-content: center;
+  align-items: center;
   user-select: none;
+  background: transparent;
 }
 
-.hero-slider-track {
+.hero-slider-scene {
+  --hero-slider-w: 260px;
+  /* Restored the preferred large image size */
+  --hero-slider-gap: 18px;
+  /* Restored the preferred gap spacing */
+
+  position: relative;
+  width: 100%;
+  height: 300px;
+  margin-top: 1rem;
   display: flex;
-  width: max-content;
-  animation: scrollRight 48s linear infinite; /* 48s duration for relaxed infinite scroll */
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  perspective: 1250px;
+  /* Restored the preferred perspective depth */
+
+  -webkit-mask: none;
+  mask: none;
+}
+
+.hero-slider-3d {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+  width: 100%;
+  height: calc(var(--hero-slider-w) * 16 / 9);
+  /* Full 3D card layout height */
+  transform-style: preserve-3d;
+  animation: hero-slider-rotate 72s linear infinite;
   will-change: transform;
 }
 
-.hero-slider-group {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+@keyframes hero-slider-rotate {
+  to {
+    transform: rotateY(1turn);
+  }
 }
 
-/* Premium Flat Card Layout (Lurus Saja, Gede & Panjang, Tanpa Shadow) */
-.hero-slider-card {
-  flex-shrink: 0;
-  width: 170px;
-  height: auto !important;
-  aspect-ratio: 9 / 16 !important;
-  border-radius: 12px; /* Standardized refined rounded corner */
-  overflow: hidden;
-  background: var(--c-white, #ffffff);
-  border: 3px solid var(--c-primary, #8B4A3E);
-  box-shadow: none !important;
-  transition: transform 0.4s ease;
-  pointer-events: none; /* User cannot click/drag images */
-  margin-right: 1rem; /* Mathematically perfect gap for seamless looping */
-}
-
-.hero-slider-card img {
-  width: 100%;
-  height: 100%;
+.hero-slider-scene .hero-slider-card {
+  --hero-slider-ba: calc(1turn / var(--hero-slider-n));
+  grid-area: 1 / 1;
+  width: var(--hero-slider-w);
+  aspect-ratio: 9 / 16;
   object-fit: cover;
-  display: block;
+  border-radius: 12px;
+  border: 2.5px solid var(--c-primary, #691f18);
+  box-shadow: 0 7px 17px rgba(105, 31, 24, 0.322);
+  /* Tight, subtle shadow */
+
+  /* Ensure hardware acceleration and hide backfaces to prevent popping/flicker bugs */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
+
+  /* Reset any Bootstrap/global .card styles */
+  padding: 0 !important;
+  background: transparent !important;
+
+  /* 
+     3D Transform: 
+     Rotate around Y axis, then translate back by R (radius) to form the ring.
+  */
+  transform:
+    rotateY(calc(var(--hero-slider-i) * var(--hero-slider-ba))) translateZ(calc(-1 * (0.5 * var(--hero-slider-w) + var(--hero-slider-gap)) / tan(calc(0.5 * var(--hero-slider-ba)))));
 }
 
-/* Right-running seamless animation keyframe */
-@keyframes scrollRight {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0%);
+/* Accessibility: respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slider-3d {
+    animation-duration: 120s;
   }
 }
 
-/* Responsive constraints */
-@media (max-width: 768px) {
-  .hero-slider-card {
-    width: 150px;
-    height: auto !important;
-    aspect-ratio: 9 / 16 !important;
-    border-radius: 12px;
-    border-width: 2.5px;
-    box-shadow: none !important;
-    margin-right: 1rem; /* Balanced gap on mobile */
+
+/* Desktop screen adjustments (scales dynamically using vw for full-bleed width) */
+@media (min-width: 1200px) {
+  .hero-slider-wrapper {
+    padding: 0;
+    margin-bottom: 0;
+    height: auto;
+    overflow: visible;
   }
-  .hero-slider-track {
-    animation-duration: 35s; /* 35s duration for a slower, smooth scroll on mobile */
+
+  .hero-slider-scene {
+    --hero-slider-w: 16.5vw;
+    /* Wider cards for premium look */
+    --hero-slider-gap: 1vw;
+    /* Tight gap */
+    height: 26vw;
+    /* Outer layout height for desktop */
+    perspective: 1600px;
+    /* Low perspective for deep inward 3D curve like Image 1 */
+
+    -webkit-mask: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    mask: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
   }
 }

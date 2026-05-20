@@ -1,0 +1,729 @@
+/**
+ * Seutastali Syakira Template Stylesheet
+ * Premium Classic Watercolor Wedding Invitation Theme
+ * With Parallax Zoom-In-To-Out Opening & Wind Sway Animations
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --theme-dark: #1e2d1f;
+  --theme-accent: #83947a;
+  --theme-accent-dark: #5b6b53;
+  --theme-bg: #f5ede4;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+}
+
+/* ==================================
+   BASE BODY
+   ================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Resets are managed in global.css */
+
+/* ---- LAYER 0: Background landscape ---- */
+.layer-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.layer-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- LAYER 1: Watercolor Sky ---- */
+.layer-sky {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 55%;
+  z-index: 2;
+  opacity: 0;
+  transform: scale(1.4);
+  transition: opacity 1s ease, transform 1.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.layer-sky.reveal {
+  opacity: 1;
+  transform: scale(1);
+}
+.layer-sky img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* ---- LAYER 2: Misty fog rows ---- */
+.layer-mist {
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1.3);
+  transition: opacity 1s ease, transform 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.layer-mist.reveal {
+  opacity: 0.7;
+  transform: scale(1);
+}
+.mist-top { top: 40%; }
+.mist-mid { top: 48%; }
+.mist-bottom { top: 55%; }
+.layer-mist img { width: 100%; }
+
+/* ---- LAYER 3: Stone Arch Frame ---- */
+.layer-arch {
+  position: absolute;
+  top: 1%; left: 2%;
+  width: 96%; height: 97%;
+  z-index: 10;
+  opacity: 0;
+  transform: scale(1.5);
+  transition: opacity 0.8s ease, transform 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.layer-arch.reveal {
+  opacity: 1;
+  transform: scale(1);
+}
+.layer-arch img {
+  width: 100%; height: 100%;
+  object-fit: fill;
+}
+
+/* ---- LAYER 4: Altar + Cypresses (inside arch) ---- */
+.layer-altar {
+  position: absolute;
+  bottom: 18%; left: 8%;
+  width: 84%;
+  z-index: 5;
+  opacity: 0;
+  transform: scale(1.3) translateY(20px);
+  transition: opacity 0.8s ease, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.layer-altar.reveal {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+.layer-altar img { width: 100%; }
+
+/* ---- LAYER 5: Staircase ---- */
+.layer-stairs {
+  position: absolute;
+  bottom: 12%; left: 12%;
+  width: 76%;
+  z-index: 6;
+  opacity: 0;
+  transform: scale(1.2) translateY(15px);
+  transition: opacity 0.8s ease, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.layer-stairs.reveal {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+.layer-stairs img { width: 100%; }
+
+/* ---- LAYER 6: Bride & Groom ---- */
+.layer-couple {
+  position: absolute;
+  bottom: 13%; left: 50%;
+  transform: translateX(-50%) scale(1.3);
+  width: 28%;
+  z-index: 7;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.layer-couple.reveal {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+.couple-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
+}
+.couple-wrap img { height: auto; }
+.orn-bride-img { width: 55%; }
+.orn-groom-img { width: 42%; margin-left: -4px; }
+
+/* ---- LAYER 7: Seagulls ---- */
+.layer-seagulls {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 40%;
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.layer-seagulls.reveal { opacity: 1; }
+
+.seagull {
+  position: absolute;
+  animation: float-bird 6s ease-in-out infinite;
+}
+.seagull img { width: 100%; height: auto; }
+.sg1 { width: 18px; top: 22%; left: 26%; animation-delay: 0s; }
+.sg2 { width: 24px; top: 17%; left: 34%; animation-delay: 1.5s; }
+.sg3 { width: 16px; top: 24%; left: 52%; animation-delay: 0.8s; }
+.sg4 { width: 20px; top: 19%; right: 24%; animation-delay: 2.2s; }
+.sg5 { width: 14px; top: 26%; right: 30%; animation-delay: 3s; }
+.sg6 { width: 12px; top: 15%; left: 45%; animation-delay: 4s; }
+
+/* ---- LAYER 8: Hanging Leaves (top of arch) ---- */
+.layer-leaves-top {
+  position: absolute;
+  z-index: 12;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1.3);
+  transition: opacity 0.8s ease, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.layer-leaves-top.reveal {
+  opacity: 1;
+  transform: scale(1);
+}
+/* Draping vine leaves on top left */
+.leaves-tl {
+  top: 0; left: -2%;
+  width: 38%;
+}
+/* Draping vine leaves on top right */
+.leaves-tr {
+  top: 0; right: -2%;
+  width: 38%;
+}
+/* Branch trailing left from arch midway */
+.leaves-ml {
+  top: 12%; left: 0;
+  width: 45%;
+  animation: wind-sway-left 7s ease-in-out infinite;
+}
+/* Branch trailing right from arch midway */
+.leaves-mr {
+  top: 12%; right: 0;
+  width: 45%;
+  animation: wind-sway-right 8s ease-in-out infinite;
+}
+.layer-leaves-top img { width: 100%; }
+
+/* ---- LAYER 9: Bottom Foreground ---- */
+.layer-foreground {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 45%;
+  z-index: 15;
+  pointer-events: none;
+}
+
+/* Grass / Aloe Vera - bottom left & right corners */
+.fg-grass {
+  position: absolute;
+  bottom: 0;
+  width: 22%;
+  z-index: 4;
+  opacity: 0;
+  transform: scale(1.4) translateY(20px);
+  transition: opacity 0.6s ease, transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.fg-grass.reveal { opacity: 1; transform: scale(1) translateY(0); }
+.fg-grass-l { left: 18%; bottom: -3%; }
+.fg-grass-r { right: 18%; bottom: -3%; }
+.fg-grass img { width: 100%; }
+
+/* Large tree foliage - top left and right of the bottom foreground area */
+.fg-tree {
+  position: absolute;
+  top: -15%;
+  width: 52%;
+  opacity: 0;
+  transform: scale(1.3);
+  transition: opacity 0.7s ease, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.fg-tree.reveal { opacity: 1; transform: scale(1); }
+.fg-tree-l { left: -6%; }
+.fg-tree-r { right: -6%; }
+.fg-tree img { width: 100%; }
+
+/* White flower bouquets */
+.fg-flower {
+  position: absolute;
+  bottom: -6%;
+  width: 52%;
+  z-index: 2;
+  opacity: 0;
+  transform: scale(1.3) translateY(10px);
+  transition: opacity 0.7s ease, transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.fg-flower.reveal { opacity: 1; transform: scale(1) translateY(0); }
+.fg-flower-l {
+  left: -6%;
+  animation: wind-rotate-left 8s ease-in-out infinite;
+  transform-origin: bottom right;
+}
+.fg-flower-r {
+  right: -6%;
+  animation: wind-rotate-right 9s ease-in-out infinite;
+  transform-origin: bottom left;
+}
+.fg-flower img { width: 100%; }
+
+/* Butterflies */
+.fg-butterfly {
+  position: absolute;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.fg-butterfly.reveal { opacity: 1; }
+.fg-butterfly-l {
+  bottom: 20%; left: 14%;
+  width: 40px;
+  animation: flutter-left 5s ease-in-out infinite;
+}
+.fg-butterfly-r {
+  bottom: 24%; right: 14%;
+  width: 36px;
+  animation: flutter-right 6s ease-in-out infinite;
+}
+.fg-butterfly img { width: 100%; }
+
+/* ---- Cover Text Content ---- */
+.cover-text {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 40px;
+  padding-bottom: 18%;
+  opacity: 0;
+  transform: scale(1.1);
+  transition: opacity 1s ease, transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.cover-text.reveal {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cover-label {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #3b4e3c;
+  margin-bottom: 8px;
+}
+
+.cover-names {
+  font-family: var(--font-heading);
+  font-size: 3.2rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #273b28;
+  line-height: 1.05;
+  margin-bottom: 0;
+}
+
+.cover-amp {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-style: italic;
+  color: #4a5c48;
+  display: block;
+  margin: 4px 0;
+}
+
+.btn-open {
+  position: absolute;
+  bottom: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--theme-accent);
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 30px;
+  padding: 14px 38px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  transition: all 0.3s ease;
+  z-index: 25;
+}
+.btn-open:hover {
+  background-color: var(--theme-accent-dark);
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+
+/* ==================================
+   MAIN INVITATION CONTENT 
+   (Revealed after cover hides)
+   ================================== */
+.main-content {
+  position: relative;
+  z-index: 1;
+  background: var(--theme-bg);
+}
+
+.main-hero {
+  padding: 3.5rem 2rem 2.5rem;
+  text-align: center;
+  border-bottom: 2px double #c5b7a8;
+}
+
+.badge-adat {
+  background: var(--theme-accent);
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.main-couple-name {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-style: italic;
+  color: #273b28;
+  font-weight: 600;
+  margin: 0.5rem 0 1rem;
+}
+
+.date-box {
+  background: #fff;
+  border-radius: 14px;
+  padding: 1.2rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+  border: 1px solid rgba(131,148,122,0.2);
+  margin-bottom: 1.5rem;
+}
+
+/* Countdown */
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 1.5rem 0;
+}
+.countdown-box {
+  background: #fff;
+  border: 1px solid rgba(131,148,122,0.25);
+  border-radius: 10px;
+  width: 62px; height: 62px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+}
+.countdown-val {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #273b28;
+  line-height: 1;
+}
+.countdown-label {
+  font-size: 8px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #6b7a69;
+  margin-top: 2px;
+}
+
+/* Neubrutalist Cards */
+.neubrutal-card {
+  background: #fff;
+  border: 2px solid var(--theme-accent-dark);
+  box-shadow: 4px 4px 0px var(--theme-accent-dark);
+  border-radius: 14px;
+  padding: 1.6rem;
+  margin-bottom: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.neubrutal-btn {
+  background: var(--theme-accent);
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 2px solid var(--theme-accent-dark);
+  box-shadow: 3px 3px 0px var(--theme-accent-dark);
+  border-radius: 30px;
+  padding: 10px 24px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 14px;
+}
+.neubrutal-btn:hover {
+  transform: translate(2px,2px);
+  box-shadow: 1px 1px 0px var(--theme-accent-dark);
+  color: #fff;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-style: italic;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #273b28;
+}
+
+.decorative-leaf {
+  color: var(--theme-accent);
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+
+/* ==================================
+   KEYFRAME ANIMATIONS
+   ================================== */
+
+/* Seagulls floating */
+@keyframes float-bird {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-6px) translateX(3px); }
+  50% { transform: translateY(-3px) translateX(-2px); }
+  75% { transform: translateY(-8px) translateX(1px); }
+}
+
+/* Flower wind rotation (subtle sway) */
+@keyframes wind-rotate-left {
+  0%, 100% { transform: scale(1) translateY(0) rotate(0deg); }
+  25% { transform: scale(1) translateY(-2px) rotate(-1.5deg); }
+  50% { transform: scale(1) translateY(0) rotate(1deg); }
+  75% { transform: scale(1) translateY(-1px) rotate(-0.8deg); }
+}
+
+@keyframes wind-rotate-right {
+  0%, 100% { transform: scale(1) translateY(0) rotate(0deg); }
+  30% { transform: scale(1) translateY(-1px) rotate(1.5deg); }
+  60% { transform: scale(1) translateY(0) rotate(-1deg); }
+  80% { transform: scale(1) translateY(-2px) rotate(0.5deg); }
+}
+
+/* Hanging leaf sway from wind */
+@keyframes wind-sway-left {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  33% { transform: scale(1) rotate(-2deg); }
+  66% { transform: scale(1) rotate(1deg); }
+}
+
+@keyframes wind-sway-right {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  33% { transform: scale(1) rotate(2deg); }
+  66% { transform: scale(1) rotate(-1deg); }
+}
+
+/* Butterfly flutter */
+@keyframes flutter-left {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-4px, -8px) rotate(-6deg); }
+  40% { transform: translate(2px, -12px) rotate(4deg); }
+  60% { transform: translate(-2px, -6px) rotate(-3deg); }
+  80% { transform: translate(3px, -10px) rotate(5deg); }
+}
+
+@keyframes flutter-right {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(5px, -7px) rotate(5deg); }
+  50% { transform: translate(-3px, -14px) rotate(-4deg); }
+  75% { transform: translate(4px, -5px) rotate(3deg); }
+}
+
+
+/* ==================================
+   DESKTOP SPLIT-SCREEN LAYOUT
+   (Uses Bootstrap row/col grid)
+   ================================== */
+
+/* Left panel: cover art background */
+.desktop-left-panel {
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+
+.desktop-bg-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.45) blur(2px);
+}
+
+.desktop-left-overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 3rem;
+}
+
+.dl-label {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 12px;
+}
+
+.dl-names {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+.dl-names span {
+  display: block;
+  font-size: 2rem;
+  opacity: 0.7;
+  margin: 4px 0;
+}
+
+.dl-date {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  opacity: 0.65;
+  margin-top: 8px;
+}
+
+/* Desktop layout is managed in global.css */
+
+@media (min-width: 1200px) {
+  .dl-names {
+    font-size: 4.5rem;
+  }
+}
+
+/* ==================================
+   PREMIUM BENTO GALLERY & FLOATING NAV
+   ================================== */
+.gallery-card {
+  background: #fff;
+  border: 2px solid var(--theme-accent-dark);
+  box-shadow: 4px 4px 0px var(--theme-accent-dark);
+  border-radius: 14px;
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gallery-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--theme-accent-dark);
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gallery-card:hover .gallery-img {
+  transform: scale(1.05);
+}
+
+/* Floating Navigation Wrapper */
+.floating-nav-wrapper {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  z-index: 9997; /* just below Dreamboard trigger/drawer (9999) */
+  width: auto;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.floating-nav-wrapper.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.floating-nav-bar {
+  display: flex;
+  background: #fff;
+  border: 2px solid var(--theme-accent-dark);
+  box-shadow: 4px 4px 0px var(--theme-accent-dark);
+  border-radius: 30px;
+  padding: 6px 12px;
+  gap: 8px;
+}
+
+.floating-nav-bar .nav-btn {
+  color: var(--theme-accent-dark);
+  background: none;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.floating-nav-bar .nav-btn:hover {
+  background: rgba(131,148,122,0.15);
+  color: var(--theme-accent-dark);
+}
+
+.floating-nav-bar .nav-btn.active {
+  background: var(--theme-accent);
+  color: #fff;
+  border: 1px solid var(--theme-accent-dark);
+}
+
+/* Adjustments for desktop */
+@media (min-width: 992px) {
+  .floating-nav-wrapper {
+    position: absolute;
+    bottom: 25px;
+    max-width: 480px;
+    width: 100%;
+  }
+}
+

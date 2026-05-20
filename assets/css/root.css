@@ -10,7 +10,7 @@
      ============================================================ */
 
     /* Core Brand Colors */
-    --c-maroon: #500701;
+    --c-maroon: #691f18;
     --c-purple: #4B0082;
     --c-gold: #ecca6c;
     --c-sand: #FDF9F0;
@@ -27,7 +27,7 @@
     --c-primary-light: #a02020;
     --c-primary-dark: #600000;
     --c-primary-darker: #2a060a;
-    --c-primary-rgb: 80, 7, 1;
+    --c-primary-rgb: 105, 31, 24;
     --c-white-rgb: 255, 255, 255;
     
     /* Legacy / Clean Alias Tokens */
@@ -125,4 +125,37 @@
     /* Layout Tokens */
     --rounded-pill: 100px;
     --rounded-1rem: 1rem;
+}
+
+/* FORCE GLOBAL MINIMUM FONT WEIGHT TO 600 FOR BRAND PRESENCE */
+html body,
+html body *,
+html body p,
+html body span,
+html body a,
+html body div,
+html body input,
+html body select,
+html body textarea,
+html body button,
+html body label,
+html body td,
+html body th,
+html body .menu-link,
+html body .menu-header,
+html body .form-control {
+  font-weight: 600 !important;
+}
+
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5,
+html body h6,
+html body strong,
+html body b,
+html body .fw-bold,
+html body .fw-semibold {
+  font-weight: 700 !important;
 }

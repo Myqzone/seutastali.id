@@ -16,15 +16,8 @@ if (!isset($content)) {
     $content = '';
 }
 ?>
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <!-- Include Global Head -->
-    <?php include ROOT_PATH . 'includes/head.php'; ?>
-    
-    <!-- Render page-specific custom CSS if injected -->
-    <?php if (isset($extra_css)) echo $extra_css; ?>
-</head>
+<?php include ROOT_PATH . 'includes/head.php'; ?>
+<?php if (isset($extra_css)) echo $extra_css; ?>
 <body>
 
     <!-- Include Global Navbar -->
@@ -38,10 +31,10 @@ if (!isset($content)) {
     <!-- Include Global Footer -->
     <?php include ROOT_PATH . 'includes/footer.php'; ?>
 
-    <!-- Include Global Action Floating Button if exists -->
+    <!-- Include Global Action Floating Button Stack if exists -->
     <?php 
-    if (file_exists(ROOT_PATH . 'includes/btn-action.php')) {
-        include ROOT_PATH . 'includes/btn-action.php';
+    if (file_exists(ROOT_PATH . 'includes/sections/btn-action.php')) {
+        include ROOT_PATH . 'includes/sections/btn-action.php';
     }
     ?>
 

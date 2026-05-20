@@ -10,7 +10,7 @@
   width: 100%;
   margin: 0 auto;
   overflow: hidden; /* Prevent horizontal page scrollbars on card scale/hover */
-  padding: 0; /* Full bleed on mobile and tablets so swiping is seamless */
+  padding: 0 0 17px 0 !important;  /* Full bleed on mobile and tablets so swiping is seamless */
 }
 
 /* Add vertical headroom to prevent hover scale clipping and edge border clipping */
@@ -24,52 +24,21 @@
   display: flex;
   flex-direction: column;
   height: auto !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
 }
 
-/* Premium Minimalist Left/Right Arrow Navigation Buttons (Icon Only) */
+/* Premium Minimalist Left/Right Arrow Navigation Buttons (Icon Only) - Hidden on all screens */
 .template-slider-nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  color: var(--c-primary) !important; /* Brand primary color */
-  font-size: 1.8rem !important; /* Elegant size */
-  text-shadow: none !important; /* No text-shadow */
-  display: none !important; /* Completely hidden on mobile & tablets by default */
-  align-items: center;
-  justify-content: center;
-  z-index: 25 !important;
-  cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+  display: none !important; /* Completely hidden everywhere as requested */
 }
 
-.template-slider-nav-btn:hover {
-  transform: translateY(-50%) scale(1.25);
-  color: var(--c-primary-light) !important; /* Brand secondary/lighter brand color */
-}
-
-.template-slider-nav-btn:active {
-  transform: translateY(-50%) scale(0.9);
-}
-
-/* Desktop Viewport (992px and up) - Special layouts for arrows outside */
+/* Desktop Viewport (992px and up) - Clean full width with bottom padding */
 @media (min-width: 992px) {
   .template-slider-container {
-    padding: 0 45px; /* Give 45px padding on left/right for the arrows to float in */
-  }
-
-  .template-slider-nav-btn {
-    display: inline-flex !important; /* Only display on desktop viewports */
-  }
-
-  .template-slider-nav-btn.prev-btn {
-    left: 10px !important; /* Float in the left padding space outside the card grids */
-  }
-
-  .template-slider-nav-btn.next-btn {
-    right: 10px !important; /* Float in the right padding space outside the card grids */
+    padding: 0 0 45px 0 !important; /* Keep bottom padding for dots, no left/right side margins needed */
   }
 }
 
@@ -102,9 +71,30 @@
 /* Concentric image wrapper maintaining 9:16 aspect ratio */
 .template-card-mockup {
   aspect-ratio: 9 / 16 !important;
-  background-color: #1a1a1a !important;
+  background-color: var(--c-sand-dark) !important;
   border-radius: 16px !important; /* Matches Bootstrap rounded-4 (16px) perfectly at p-0 */
   border: 3px solid var(--c-primary) !important;
+  position: relative;
+  overflow: hidden;
+  
+  /* Silver bullet fix for WebKit/Chrome border-radius clipping bug */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+  
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+@keyframes cardImageFadeIn {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Mockup image transitions and mathematically concentric inner rounding */
@@ -114,9 +104,10 @@
   -webkit-user-drag: none !important;
   user-select: none !important;
   -webkit-user-select: none !important;
-  will-change: transform;
+  will-change: transform, opacity;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  animation: cardImageFadeIn 0.25s ease-out forwards;
 }
 
 /* Image zoom effect on card hover (desktop only) */
@@ -132,6 +123,20 @@ span.badge.template-card-badge {
   letter-spacing: 0.5px !important;
   line-height: 1.2 !important;
   font-weight: 700 !important;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* Custom interactive button overlay wrapper */
+.template-hover-btn-wrapper {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 /* Custom interactive button overlay style */
@@ -140,6 +145,11 @@ span.badge.template-card-badge {
   border: 2px solid var(--c-primary) !important;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
   transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease !important;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 /* Button interactive hover rules */
@@ -172,3 +182,69 @@ span.badge.template-card-badge {
     transform: none !important;
   }
 }
+
+/* Premium Neubrutalist Splide Pagination (Dots) styling */
+.splide__pagination {
+  position: absolute !important;
+  bottom: -25px !important; /* Move way below the cards on desktop to prevent overlap */
+  left: 0 !important;
+  right: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin: 0 !important;
+  z-index: 10 !important;
+}
+
+.splide__pagination__page {
+  background: var(--c-primary) !important;
+  opacity: 0.25 !important;
+  width: 8px !important;
+  height: 8px !important;
+  border: none !important;
+  border-radius: 50% !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: pointer !important;
+}
+
+.splide__pagination__page:hover {
+  opacity: 0.6 !important;
+}
+
+.splide__pagination__page.is-active {
+  background: var(--c-primary) !important;
+  opacity: 1 !important;
+  width: 20px !important; /* Premium expand pill effect */
+  border-radius: 100px !important;
+  transform: none !important;
+}
+
+/* Mobile responsive pagination spacing adjustments */
+@media (max-width: 768px) {
+  .splide__pagination {
+    bottom: -18px !important; /* Move way below the cards on mobile */
+    gap: 6px !important;
+  }
+  .splide__pagination__page {
+    width: 6px !important;
+    height: 6px !important;
+  }
+  .splide__pagination__page.is-active {
+    width: 14px !important;
+  }
+}
+
+/* Custom template detail page mockup sizing */
+.template-detail-mockup {
+  max-width: 340px !important;
+}
+
+@media (max-width: 768px) {
+  .template-detail-mockup {
+    max-width: 170px !important;
+  }
+}
+
+
+

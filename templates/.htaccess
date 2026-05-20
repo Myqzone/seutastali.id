@@ -1,0 +1,5 @@
+# 🛡️ SEUTASTALI TEMPLATES DIRECTORY PROTECTION
+# Location: /templates/.htaccess
+
+# Disable directory indexing listing (Prevents users from browsing folder contents)
+Options -Indexes

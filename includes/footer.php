@@ -11,7 +11,7 @@ if (!defined('ROOT_PATH')) {
         <div class="col-12 col-lg-5 mb-4 mb-lg-0">
           <div class="d-flex flex-column gap-4 me-xl-5">
             <a href="<?= MAIN_SITE_URL ?>" class="d-block">
-              <img src="<?= ASSETS_URL ?>media/logos/logo-seutastali.webp" width="120" height="auto" alt="SeutasTali" class="img-fluid">
+              <img src="<?= ASSETS_URL ?>media/logo/logo-full.webp" width="120" height="auto" alt="Seutastali" class="img-fluid">
             </a>
             <p class="mb-0">
               Platform pembuatan undangan digital profesional yang elegan, praktis, dan berkesan untuk momen istimewa Anda.
@@ -26,8 +26,8 @@ if (!defined('ROOT_PATH')) {
           <div class="d-flex flex-column gap-3">
             <h6 class="mb-0 fw-semibold">Menu Utama</h6>
             <ul class="footer-menu list-unstyled mb-0 d-flex flex-column gap-2">
-              <li><a href="about">About Us</a></li>
-              <li><a href="contact">Contact Us</a></li>
+              <li><a href="<?= rtrim(MAIN_SITE_URL, '/') ?>/about">About Us</a></li>
+              <li><a href="<?= rtrim(MAIN_SITE_URL, '/') ?>/contact">Contact Us</a></li>
             </ul>
           </div>
         </div>
@@ -48,7 +48,7 @@ if (!defined('ROOT_PATH')) {
             <h6 class="mb-0 fw-semibold">Find Us</h6>
             <p class="mb-0">Jakarta, Indonesia</p>
             <a class="text-decoration-underline" href="mailto:hello@seutastali.id">hello@seutastali.id</a>
-            <a class="text-decoration-underline" href="https://wa.me/628123456789">+62 812 3456 789</a>
+            <a class="text-decoration-underline" href="https://wa.me/6285195501712">+62 851 9550 1712</a>
           </div>
         </div>
       </div>

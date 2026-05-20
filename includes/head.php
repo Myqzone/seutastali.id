@@ -16,8 +16,8 @@ if (!defined('ASSETS_URL')) {
 
 // Load configurations from database if connection is available
 require_once ROOT_PATH . 'config/helpers/content/web-config.php';
-$site_title = 'SeutasTali';
-$site_description = 'SeutasTali adalah platform pembuatan undangan digital profesional yang memungkinkan Anda membuat undangan pernikahan atau acara lainnya dengan cepat, elegan, dan praktis.';
+$site_title = 'Seutastali';
+$site_description = 'Seutastali adalah platform pembuatan undangan digital profesional yang memungkinkan Anda membuat undangan pernikahan atau acara lainnya dengan cepat, elegan, dan praktis.';
 $site_keywords = 'undangan digital, seutastali, undangan pernikahan online, buat undangan digital, rsvp online, digital invitation indonesia';
 
 if (isset($conn) && function_exists('get_config')) {
@@ -41,7 +41,7 @@ if (isset($data_bs_theme)) {
 
 <head>
     <meta charset=" utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 
     <script>
         // Prevent pinch-to-zoom on touch devices
@@ -93,7 +93,7 @@ if (isset($data_bs_theme)) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<?= ASSETS_URL ?>css/style.css">
 
 
 
@@ -103,29 +103,8 @@ if (isset($data_bs_theme)) {
 
     <?php include(__DIR__ . '/ico.php'); ?>
 
-    <!-- Primary Meta Tags -->
-    <?php
-    $meta_title = isset($page_title) ? $page_title . ' - ' . $site_title : $site_title;
-    $meta_desc = isset($page_description) ? $page_description : $site_description;
-    ?>
-    <meta name="title" content="<?= $meta_title ?>">
-    <meta content="<?= $meta_desc ?>" name="description">
-    <meta content="<?= $site_keywords ?>" name="keywords">
-    <meta name="theme-color" content="#500701">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="<?= STATIC_URL ?>">
-    <meta property="og:title" content="<?= $meta_title ?>">
-    <meta property="og:description" content="<?= $meta_desc ?>">
-    <meta property="og:image" content="<?= ASSETS_URL ?>media/utility/metatag.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="1200">
-    <meta property="og:site_name" content="<?= $site_title ?>">
-
-    <meta property="twitter:url" content="<?= STATIC_URL ?>">
-    <meta property="twitter:title" content="<?= $meta_title ?>">
-    <meta property="twitter:description" content="<?= $meta_desc ?>">
+    <!-- Primary & Social Meta Tags -->
+    <?php include(__DIR__ . '/meta.php'); ?>
 
     <?php if (isset($extraHead)) {
         echo $extraHead;
